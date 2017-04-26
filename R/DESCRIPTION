@@ -1,12 +1,14 @@
 Package: Metrics
-Title: Evaluation metrics for machine learning
-Description: Metrics is a set of evaluation metrics
-    that is commonly used in supervised machine
-    learning.
-URL: https://github.com/benhamner/Metrics/
-Version: 0.1.1
+Version: 0.1.3
+Title: Evaluation Metrics for Machine Learning
+Description: A set of evaluation metrics that are commonly used in supervised machine learning.
+Authors@R: c(
+  person("Ben", "Hamner", role = c("aut", "cre", "cph"), email = "ben@benhamner.com"),
+  person("Erin", "LeDell", role = c("ctb"), email = "oss@ledell.org"))
+URL: https://github.com/benhamner/Metrics/tree/master/R
+BugReports: https://github.com/benhamner/Metrics/issues
 Maintainer: Ben Hamner <ben@benhamner.com>
-Author: Ben Hamner <ben@benhamner.com>
-License: BSD
+License: BSD_3_clause + file LICENSE
 Collate:
     'metrics.r'
+RoxygenNote: 6.0.1

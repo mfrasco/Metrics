@@ -3,7 +3,7 @@
 Installation
 ============
 
-To install or update, run the following command from the R prompt. You need the latest version of R to get the latest version of Metrics.
+To install or update, run the following command from the R prompt. You need the latest version of R to get the latest version of **Metrics**.
 
 ```
 > install.packages("Metrics")
