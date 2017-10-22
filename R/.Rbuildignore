@@ -1,5 +1,3 @@
-install_r_packages.r
-run_r_tests.sh
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README.*$

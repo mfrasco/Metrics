@@ -8,6 +8,9 @@ MANIFEST
 setup-config
 *.egg-info
 
+# R files
+*.Rhistory
+
 # Backup files
 *~
 
