@@ -8,6 +8,5 @@ r_check_args: --as-cran
 before_install:
     - cd Metrics
 
-script:
-    - R CMD build . 
-    - R CMD check *tar.gz
+after_success:
+    - Rscript -e 'install.packages("covr"); covr::codecov()'
