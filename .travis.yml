@@ -1,0 +1,13 @@
+language: r
+cache: packages
+sudo: false
+latex: false
+warnings_are_errors: true
+r_check_args: --as-cran
+
+before_install:
+    - cd subdirectory
+
+script:
+    - R CMD build . 
+    - R CMD check *tar.gz
