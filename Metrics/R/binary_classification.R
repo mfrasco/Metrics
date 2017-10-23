@@ -4,7 +4,7 @@
 #'              that provide binary classification metrics
 #' @param actual ground truth binary numeric vector
 #' @param predicted predicted numeric vector
-params_binary <- NULL
+NULL
 
 #' Compute the area under the ROC curve (AUC)
 #'

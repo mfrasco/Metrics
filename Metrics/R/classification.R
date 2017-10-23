@@ -4,7 +4,7 @@
 #'              that provide classification metrics
 #' @param actual ground truth vector
 #' @param predicted predicted vector
-params_classification <- NULL
+NULL
 
 #' Compute the average precision at k
 #'

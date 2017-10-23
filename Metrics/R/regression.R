@@ -4,7 +4,7 @@
 #'              that provide regression metrics
 #' @param actual ground truth numeric vector
 #' @param predicted predicted numeric vector
-params_regression <- NULL
+NULL
 
 #' Compute the squared error
 #'
@@ -106,6 +106,7 @@ ape <- function(actual, predicted) {
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 #' mape(actual, predicted)
+#' @export
 mape <- function(actual, predicted) {
     return(mean(ape(actual, predicted)))
 }
@@ -120,6 +121,7 @@ mape <- function(actual, predicted) {
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 #' smape(actual, predicted)
+#' @export
 smape <- function(actual, predicted) {
     return(2 * mean(ae(actual, predicted) / (abs(actual) + abs(predicted))))
 }
