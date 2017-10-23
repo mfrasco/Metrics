@@ -2,21 +2,28 @@
 % Please edit documentation in R/regression.R
 \name{rmsle}
 \alias{rmsle}
-\title{Compute the root mean squared log error}
+\title{Root Mean Squared Log Error}
 \usage{
 rmsle(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{ground truth non-negative vector}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{predicted non-negative vector}
 }
 \description{
-This function computes the root mean squared log error between
+\code{rmsle} computes the root mean squared log error between
 two numeric vectors
 }
+\details{
+\code{rmsle} adds one to both \code{actual} and \code{predicted} before taking
+the natural logarithm to avoid taking the natural log of zero.
+}
 \examples{
-actual <- c(1,1,1,0,0,0)
-predicted <- c(0.9,0.8,0.4,0.5,0.3,0.2)
+actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
+predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 rmsle(actual, predicted)
+}
+\seealso{
+\code{\link{msle}}
 }

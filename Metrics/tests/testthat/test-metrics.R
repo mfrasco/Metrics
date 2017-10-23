@@ -24,77 +24,12 @@ test_that('area under ROC curve is calculated correctly', {
     expect_equal(auc(c(1,1,1,1,0,0,0,0,0,0),0*(1:10)), 0.5)
 })
 
-test_that('absolute error is calculated correctly', {
-    expect_equal(ae(3.4, 3.4), 0)
-    expect_equal(ae(3.4, 4.4), 1.0)
-    expect_equal(ae(9, 11), 2)
-})
-
 test_that('classification error is calculated correctly', {
     expect_equal(ce(c(1,1,1,0,0,0),c(1,1,1,0,0,0)), 0.0)
     expect_equal(ce(c(1,1,1,0,0,0),c(1,1,1,1,0,0)), 1/6)
     expect_equal(ce(c(1,2,3,4),c(1,2,3,3)), 1/4)
     expect_equal(ce(c("cat","dog","bird"),c("cat","dog","fish")), 1/3)
     expect_equal(ce(c("cat","dog","bird"),c("caat","doog","biird")), 1.0)
-})
-
-test_that('mean absolute error is calculated correctly', {
-    expect_equal(mae(0:10, 1:11), 1)
-    expect_equal(mae(seq(0,2,0.5), seq(0,2,0.5)), 0)
-    expect_equal(mae(1:4, c(1,2,3,5)), 0.25)
-})
-
-test_that('mean squared error is calculated correctly', {
-    expect_equal(mse(0:10, 1:11), 1.0)
-    expect_equal(mse(seq(0,2,0.5), seq(0,2,0.5)), 0.0)
-    expect_equal(mse(1:4, c(1,2,3,6)), 1.0)
-})
-
-test_that('mean squared log error is calculated correctly', {
-    expect_equal(msle(c(exp(2)-1),c(exp(1)-1)), 1)
-    expect_equal(msle(seq(0,2,0.5),seq(0,2,0.5)), 0)
-    expect_equal(msle(c(1,2,3,exp(1)-1),c(1,2,3,exp(2)-1)), 0.25)
-})
-
-test_that('relative absolute error is calculated correctly', {
-    expect_equal(rae(0:10, 30:40), 11)
-    expect_equal(rae(seq(0,2,0.5), seq(0,2,0.5)), 0.0)
-    expect_equal(rae(1:4, c(1,2,3,5)), 0.25)
-})
-
-test_that('root mean squared error is calculated correctly', {
-    expect_equal(rmse(0:10, 1:11), 1.0)
-    expect_equal(rmse(seq(0,2,0.5), seq(0,2,0.5)), 0.0)
-    expect_equal(rmse(1:4, c(1,2,3,5)), 0.5)
-})
-
-test_that('root mean squared log error is calculated correctly', {
-    expect_equal(rmsle(c(exp(2)-1),c(exp(1)-1)), 1)
-    expect_equal(rmsle(seq(0,2,0.5),seq(0,2,0.5)), 0)
-    expect_equal(rmsle(c(1,2,3,exp(1)-1),c(1,2,3,exp(2)-1)), 0.5)
-})
-
-test_that('root relative squared error is calculated correctly', {
-    expect_equal(rrse(0:10, 2:12), sqrt(0.4))
-    expect_equal(rrse(seq(0,2,0.5), seq(0,2,0.5)), 0.0)
-    expect_equal(rrse(1:4, c(1,2,3,5)), sqrt(0.2))
-})
-
-test_that('relative squared error is calculated correctly', {
-    expect_equal(rse(0:10, 2:12), 0.4)
-    expect_equal(rse(seq(0,2,0.5), seq(0,2,0.5)), 0.0)
-    expect_equal(rse(1:4, c(1,2,3,5)), 0.2)
-})
-
-test_that('squared error is calculated correctly', {
-    expect_equal(se(3.4, 3.4), 0)
-    expect_equal(se(3.4, 4.4), 1.0)
-    expect_equal(se(9, 11), 4)
-})
-
-test_that('squared log error is calculated correctly', {
-    expect_equal(sle(3.4,3.4), 0)
-    expect_equal(sle(exp(2)-1,exp(1)-1), 1)
 })
 
 test_that('f1 score is calculated correctly', {

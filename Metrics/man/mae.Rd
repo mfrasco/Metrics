@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{mae}
 \alias{mae}
-\title{Compute the mean absolute error}
+\title{Mean Absolute Error}
 \usage{
 mae(actual, predicted)
 }
@@ -12,11 +12,13 @@ mae(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the mean absolute error between
-two numeric vectors
+\code{mae} computes the mean absolute error between two numeric vectors
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 mae(actual, predicted)
+}
+\seealso{
+\code{\link{mdae}} \code{\link{mape}}
 }
