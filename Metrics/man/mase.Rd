@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_series.R
 \name{mase}
 \alias{mase}
-\title{Compute the mean absolute scaled error}
+\title{Mean Absolute Scaled Error}
 \usage{
 mase(actual, predicted, step_size = 1)
 }
@@ -16,7 +16,16 @@ observation at the end of the vector}
 in order to compute the naive forecast.}
 }
 \description{
-This function computes the mean absolute scaled error between two numeric
+\code{mase} computes the mean absolute scaled error between two numeric
 vectors. This function is only intended for time series data, where
 \code{actual} and \code{numeric} are numeric vectors ordered by time.
+}
+\examples{
+actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
+predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
+step_size <- 1
+mase(actual, predicted, step_size)
+}
+\seealso{
+\code{\link{smape}} \code{\link{mape}}
 }

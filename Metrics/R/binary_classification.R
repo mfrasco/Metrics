@@ -2,16 +2,21 @@
 #' @name params_binary
 #' @description This object provides the documentation for the parameters of functions
 #'              that provide binary classification metrics
-#' @param actual ground truth binary numeric vector
-#' @param predicted predicted numeric vector
+#' @param actual The ground truth binary numeric vector containing 1 for the positive
+#'               class and 0 for the negative class.
+#' @param predicted The predicted binary numeric vector containing 1 for the positive
+#'                  class and 0 for the negative class.
 NULL
 
-#' Compute the area under the ROC curve (AUC)
+#' Area under the ROC curve (AUC)
 #'
-#' This function computes the area under the receiver-operator
-#' characteristic curve (AUC)
+#' This function computes the area under the receiver-operator characteristic curve (AUC)
 #'
 #' @inheritParams params_binary
+#' @param predicted A numeric vector of predicted values, where the smallest values correspond
+#'                  to the observations most believed to be in the negative class
+#'                  and the largest values correspond to the observations most believed
+#'                  to be in the positive class.
 #' @export
 #' @examples
 #' actual <- c(1, 1, 1, 0, 0, 0)
@@ -24,12 +29,14 @@ auc <- function(actual, predicted) {
     return((sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))
 }
 
-#' Compute the log loss
+#' Log Loss
 #'
-#' This function computes the elementwise log loss between
-#' two numeric vectors
+#' This function computes the elementwise log loss between two numeric vectors
 #'
 #' @inheritParams params_binary
+#' @param predicted A numeric vector of predicted values, where the values correspond
+#'                  to the probabilities that each observation belongs to the positive
+#'                  class
 #' @examples
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(0.9, 0.8, 0.4, 0.5, 0.3, 0.2)
@@ -42,12 +49,11 @@ ll <- function(actual, predicted) {
     return(score)
 }
 
-#' Compute the mean log loss
+#' Mean Log Loss
 #'
-#' This function computes the mean log loss between
-#' two numeric vectors
+#' This function computes the average log loss between two numeric vectors
 #'
-#' @inheritParams params_binary
+#' @inheritParams ll
 #' @examples
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(0.9, 0.8, 0.4, 0.5, 0.3, 0.2)

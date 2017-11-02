@@ -4,9 +4,11 @@
 \alias{params_binary}
 \title{Inherit Documentation for Binary Classification Metrics}
 \arguments{
-\item{actual}{ground truth binary numeric vector}
+\item{actual}{The ground truth binary numeric vector containing 1 for the positive
+class and 0 for the negative class.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted binary numeric vector containing 1 for the positive
+class and 0 for the negative class.}
 }
 \description{
 This object provides the documentation for the parameters of functions

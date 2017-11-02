@@ -17,7 +17,7 @@ test_that('squared error is calculated correctly', {
 })
 
 test_that('sum of squared errors is calculated correctly', {
-    expect_equal(sse(c(1, 3, 2), c(2, 3, 4)), 3)
+    expect_equal(sse(c(1, 3, 2), c(2, 3, 4)), 5)
 })
 
 test_that('mean squared error is calculated correctly', {
@@ -31,7 +31,7 @@ test_that('root mean squared error is calculated correctly', {
 
 test_that('absolute error is calculated correctly', {
     expect_equal(ae(3.4, 4.4), 1)
-    expect_equal(se(9:11, 11:9), c(2, 0, 2))
+    expect_equal(ae(9:11, 11:9), c(2, 0, 2))
 })
 
 test_that('mean absolute error is calculated correctly', {

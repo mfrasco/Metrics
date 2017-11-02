@@ -10,7 +10,7 @@ This package is distributed from CRAN. From the R prompt, run `install.packages(
 
 ## Metrics Repo
 
-This repository contains the code for the **Metrics** package in R. **Metrics** was created by Ben Hamner, and its original home is located [at this github repo](https://github.com/benhamner/Metrics/). That repo contains packages for common machine learning metrics in several programming languages, not just R. However, on 2017-04-21, CRAN orphaned the R package. In an effort to revive the status of the R package, I cloned the original and created this repo. Since then, I have added new metrics, improved function documentation, and fixed bugs.
+This repository contains the code for the **Metrics** package in R. **Metrics** was created by Ben Hamner, and its original home is located [at this github repo](https://github.com/benhamner/Metrics/). That repo contains packages for common machine learning metrics in several programming languages, not just R. However, on 2017-04-21, CRAN orphaned the R package. In an effort to revive the status of the R package, I cloned the original and created this repo. Since then, I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
 
 ## Community Feedback
 
@@ -19,11 +19,6 @@ If you notice anything wrong with the **Metrics** package or have any ideas on h
 ## What Metrics are Included in this Package?
 
 All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as $x$ and `predicted` as $y$ for the sake of mathematical brevity.
-
-- For regression metrics, `actual` can be any arbitrary numeric vector.
-- For time series metrics, `actual` can be any arbitrary numeric vector where the observations are ordered in time with the most recent observation is at the end of the vector.
-- For classification metrics, `actual` can be any vector with a discrete number of unique elements.
-- For binary classification metrics, `actual` must be a binary vector of zeros and ones.
 
 | Metric Type | Metric Name | Function Name | Formula |
 | ---- | ------------------------ | ---- | ------------------------------- |
@@ -44,9 +39,7 @@ All functions in the **Metrics** package take at least two arguments: `actual` a
 | time series |  Mean Absolute Scaled Error | mase | $\Big[\sum_{i=1}^n \lvert x_i - y_i \rvert\Big] / \Big[\frac{n}{n - m} \sum_{i=1+m}^n \lvert x_i - x_{i-m} \rvert \Big]$|
 | classification | Classification Error | ce | $\frac{1}{n} \sum_{i=1}^n I(x_i \neq y_i)$ |
 | classification | Accuracy | accuracy | $\frac{1}{n} \sum_{i=1}^n I(x_i = y_i)$ |
-| classification | Average Precision at K | apk |  |
-| classification | Mean Average Precision at K | mapk |  |
-| classification | F1 Score | f1 | |
+| classification | F1 Score | f1 | $\frac{2 * \text{precision} * \text{recall}}{\text{precision} + \text{recall}}$ |
 | binary classification | Area Under ROC Curve | auc | $\int_0^1 [1 - G_1(G^{-1}_0(1 - v))] dv$. `help(auc)` for details. |
 | binary classification | Log Loss | ll | $x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |
 | binary classification | Mean Log Loss | logloss | $\frac{1}{n} \sum_{i=1}^n x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |

@@ -2,18 +2,21 @@
 % Please edit documentation in R/binary_classification.R
 \name{auc}
 \alias{auc}
-\title{Compute the area under the ROC curve (AUC)}
+\title{Area under the ROC curve (AUC)}
 \usage{
 auc(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth binary numeric vector}
+\item{actual}{The ground truth binary numeric vector containing 1 for the positive
+class and 0 for the negative class.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{A numeric vector of predicted values, where the smallest values correspond
+to the observations most believed to be in the negative class
+and the largest values correspond to the observations most believed
+to be in the positive class.}
 }
 \description{
-This function computes the area under the receiver-operator
-characteristic curve (AUC)
+This function computes the area under the receiver-operator characteristic curve (AUC)
 }
 \examples{
 actual <- c(1, 1, 1, 0, 0, 0)

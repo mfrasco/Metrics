@@ -141,6 +141,7 @@ mae <- function(actual, predicted) {
 #'
 #' \code{mdae} computes the median absolute error between two numeric vectors
 #'
+#' @importFrom stats median
 #' @inheritParams params_regression
 #' @export
 #' @seealso \code{\link{mae}} \code{\link{mape}}
@@ -149,7 +150,7 @@ mae <- function(actual, predicted) {
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 #' mdae(actual, predicted)
 mdae <- function(actual, predicted) {
-    return(median(ae(actual, predicted)))
+    return(stats::median(ae(actual, predicted)))
 }
 
 #' Absolute percent error
