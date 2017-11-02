@@ -4,9 +4,9 @@
 \alias{params_classification}
 \title{Inherit Documentation for Classification Metrics}
 \arguments{
-\item{actual}{ground truth vector}
+\item{actual}{The ground truth vector.}
 
-\item{predicted}{predicted vector}
+\item{predicted}{The predicted vector.}
 }
 \description{
 This object provides the documentation for the parameters of functions

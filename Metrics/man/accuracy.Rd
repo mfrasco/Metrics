@@ -7,9 +7,9 @@
 accuracy(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth vector}
+\item{actual}{The ground truth vector.}
 
-\item{predicted}{predicted vector}
+\item{predicted}{The predicted vector.}
 }
 \description{
 This function computes the accuracy score between two vectors

@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{rrse}
 \alias{rrse}
-\title{Compute the root relative squared error}
+\title{Root Relative Squared Error}
 \usage{
 rrse(actual, predicted)
 }
@@ -12,11 +12,18 @@ rrse(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the root relative squared error between
-two numeric vectors
+\code{rrse} computes the root relative squared error between two numeric vectors
+}
+\details{
+\code{rrse} takes the square root of \code{sse(actual, predicted)} divided by
+\code{sse(actual, mean(actual))}, meaning that it provides the error of the
+predictions relative to a naive model that predicted the mean for every data point.
 }
 \examples{
-actual <- c(1,1,1,0,0,0)
-predicted <- c(0.9,0.8,0.4,0.5,0.3,0.2)
+actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
+predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 rrse(actual, predicted)
+}
+\seealso{
+\code{\link{rrse}} \code{\link{rae}}
 }

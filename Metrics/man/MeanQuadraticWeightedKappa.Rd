@@ -7,16 +7,15 @@
 MeanQuadraticWeightedKappa(kappas, weights = rep(1, length(kappas)))
 }
 \arguments{
-\item{kappas}{is a vector of possible kappas}
+\item{kappas}{A numeric vector of possible kappas.}
 
-\item{weights}{is an optional vector of ratings}
+\item{weights}{An optional numeric vector of ratings.}
 }
 \description{
-This function computes the mean quadratic weighted
-kappa, which can optionally be weighted
+This function computes the mean quadratic weighted kappa, which can optionally be weighted
 }
 \examples{
-kappas <- c(0.3,0.2,0.2,0.5,0.1,0.2)
-weights <- c(1.0,2.5,1.0,1.0,2.0,3.0)
+kappas <- c(0.3 ,0.2, 0.2, 0.5, 0.1, 0.2)
+weights <- c(1.0, 2.5, 1.0, 1.0, 2.0, 3.0)
 MeanQuadraticWeightedKappa(kappas, weights)
 }

@@ -2,21 +2,27 @@
 % Please edit documentation in R/regression.R
 \name{msle}
 \alias{msle}
-\title{Compute the mean squared log error}
+\title{Mean squared log error}
 \usage{
 msle(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{ground truth non-negative vector}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{predicted non-negative vector}
 }
 \description{
-This function computes the mean squared log error between
-two numeric vectors
+\code{msle} computes the mean squared log error between two numeric vectors
+}
+\details{
+\code{msle} adds one to both \code{actual} and \code{predicted} before taking
+the natural logarithm to avoid taking the natural log of zero.
 }
 \examples{
-actual <- c(1,1,1,0,0,0)
-predicted <- c(0.9,0.8,0.4,0.5,0.3,0.2)
+actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
+predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 msle(actual, predicted)
+}
+\seealso{
+\code{\link{rmsle}}
 }

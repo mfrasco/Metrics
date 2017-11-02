@@ -2,67 +2,16 @@
 #' @name params_classification
 #' @description This object provides the documentation for the parameters of functions
 #'              that provide classification metrics
-#' @param actual ground truth vector
-#' @param predicted predicted vector
+#' @param actual The ground truth vector.
+#' @param predicted The predicted vector.
 NULL
-
-#' Compute the average precision at k
-#'
-#' This function computes the average precision at k
-#' between two sequences
-#'
-#' @param k max length of predicted sequence
-#' @param actual ground truth set (vector)
-#' @param predicted predicted sequence (vector)
-#' @examples
-#' actual <- c(1,1,1,0,0,0)
-#' predicted <- c(1,0,1,1,0,0)
-#' apk(4, actual, predicted)
-#' @export
-apk <- function(k, actual, predicted) {
-    score <- 0.0
-    cnt <- 0.0
-    for (i in 1:min(k,length(predicted))) {
-        if (predicted[i] %in% actual && !(predicted[i] %in% predicted[0:(i-1)])) {
-            cnt <- cnt + 1
-            score <- score + cnt/i
-        }
-    }
-    return(score / min(length(actual), k))
-}
-
-#' Compute the mean average precision at k
-#'
-#' This function computes the mean average precision at k
-#' of two sequences
-#'
-#' @param k max length of predicted sequence
-#' @param actual list of ground truth sets (vectors)
-#' @param predicted list of predicted sequences (vectors)
-#' @examples
-#' actual <- c(1,1,1,0,0,0)
-#' predicted <- c(1,0,1,1,0,0)
-#' mapk(4, actual, predicted)
-#' @export
-mapk <- function(k, actual, predicted) {
-    if (length(actual) == 0 || length(predicted) == 0) {
-        return(0.0)
-    }
-    
-    scores <- rep(0, length(actual))
-    for (i in 1:length(scores)) {
-        scores[i] <- apk(k, actual[[i]], predicted[[i]])
-    }
-    return(mean(scores))
-}
 
 #' Compute the classification error
 #'
 #' This function computes the classification error
 #' between two vectors
 #'
-#' @param actual ground truth vector
-#' @param predicted predicted vector
+#' @inheritParams params_classification
 #' @examples
 #' actual <- c('a', 'a', 'c', 'b', 'c')
 #' predicted <- c('a', 'b', 'c', 'b', 'a')
@@ -76,8 +25,7 @@ ce <- function(actual, predicted) {
 #' 
 #' This function computes the accuracy score between two vectors
 #' 
-#' @param actual ground truth vector
-#' @param predicted predicted vector
+#' @inheritParams params_classification
 #' @export
 #' @examples
 #' actual <- c('a', 'a', 'c', 'b', 'c')
@@ -89,18 +37,17 @@ accuracy <- function(actual, predicted) {
 
 #' Compute the quadratic weighted kappa
 #'
-#' This function computes the quadratic weighted kappa
-#' between two vectors of integers
+#' This function computes the quadratic weighted kappa between two vectors of integers
 #'
-#' @param rater.a is the first rater's ratings
-#' @param rater.b is the second rater's ratings
-#' @param min.rating is the minimum possible rating
-#' @param max.rating is the maximum possible rating
+#' @param rater.a An integer vector of the first rater's ratings.
+#' @param rater.b An integer vector of the second rater's ratings.
+#' @param min.rating The minimum possible rating.
+#' @param max.rating The maximum possible rating.
+#' @export
 #' @examples
 #' rater.a <- c(1, 4, 5, 5, 2, 1)
 #' rater.b <- c(2, 2, 4, 5, 3, 3)
 #' ScoreQuadraticWeightedKappa(rater.a, rater.b, 1, 5)
-#' @export
 ScoreQuadraticWeightedKappa <- function(rater.a
                                         , rater.b
                                         , min.rating = min(c(rater.a, rater.b))
@@ -130,16 +77,15 @@ ScoreQuadraticWeightedKappa <- function(rater.a
 
 #' Compute the mean quadratic weighted kappa
 #'
-#' This function computes the mean quadratic weighted
-#' kappa, which can optionally be weighted
+#' This function computes the mean quadratic weighted kappa, which can optionally be weighted
 #'
-#' @param kappas is a vector of possible kappas
-#' @param weights is an optional vector of ratings
-#' @examples
-#' kappas <- c(0.3,0.2,0.2,0.5,0.1,0.2)
-#' weights <- c(1.0,2.5,1.0,1.0,2.0,3.0)
-#' MeanQuadraticWeightedKappa(kappas, weights)
+#' @param kappas A numeric vector of possible kappas.
+#' @param weights An optional numeric vector of ratings.
 #' @export
+#' @examples
+#' kappas <- c(0.3 ,0.2, 0.2, 0.5, 0.1, 0.2)
+#' weights <- c(1.0, 2.5, 1.0, 1.0, 2.0, 3.0)
+#' MeanQuadraticWeightedKappa(kappas, weights)
 MeanQuadraticWeightedKappa <- function(kappas
                                        , weights = rep(1, length(kappas))
 ) {
@@ -157,29 +103,4 @@ MeanQuadraticWeightedKappa <- function(kappas
     kappas <- kappas * weights
     kappas <- mean(kappas)
     return(z2r(kappas))
-}
-
-#' Compute the f1 score
-#'
-#' This function computes the f1 score between
-#' two numeric vectors
-#'
-#' @param actual ground truth vector
-#' @param predicted predicted vector
-#' @examples
-#' actual <- c(1,1,1,0,0,0)
-#' predicted <- c(1,0,1,1,0,0)
-#' f1(actual, predicted)
-#' @export
-f1 <- function (actual, predicted) {
-    act <- unique(actual)
-    pred <- unique(predicted)
-    
-    tp <- length(intersect(act, pred))
-    fp <- length(setdiff(pred, act))
-    fn <- length(setdiff(act, pred))
-    
-    precision <- ifelse(tp == 0 && fp==0, 0, tp / (tp + fp))
-    recall <- ifelse(tp == 0 && fn==0, 0, tp / (tp + fn))
-    return(ifelse(precision == 0 && recall == 0, 0, 2 * precision * recall / (precision + recall)))
 }

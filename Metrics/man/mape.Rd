@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{mape}
 \alias{mape}
-\title{Compute the mean absolute percent error}
+\title{Mean Absolute Percent Error}
 \usage{
 mape(actual, predicted)
 }
@@ -12,11 +12,19 @@ mape(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the mean absolute percent error between two numeric
-vectors
+\code{mape} computes the mean absolute percent error between two numeric vectors
+}
+\details{
+\code{mape} is calculated as the average of (\code{actual} - \code{predicted}) / \code{actual}.
+This means that the function will return \code{-Inf}, \code{Inf}, or \code{NaN}
+if \code{actual} is zero. Due to the instability at or near zero, \code{smape} or
+\code{mase} are often used as alternatives.
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 mape(actual, predicted)
+}
+\seealso{
+\code{\link{mae}} \code{\link{smape}} \code{\link{mase}}
 }

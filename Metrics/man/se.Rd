@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{se}
 \alias{se}
-\title{Compute the squared error}
+\title{Squared Error}
 \usage{
 se(actual, predicted)
 }
@@ -12,11 +12,13 @@ se(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the elementwise squared error between
-two numeric vectors
+\code{se} computes the elementwise squared error between two numeric vectors
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 se(actual, predicted)
+}
+\seealso{
+\code{\link{mse}} \code{\link{rmse}}
 }

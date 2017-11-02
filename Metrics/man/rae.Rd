@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{rae}
 \alias{rae}
-\title{Compute the relative absolute error}
+\title{Relative Absolute Error}
 \usage{
 rae(actual, predicted)
 }
@@ -12,11 +12,15 @@ rae(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the relative absolute error between
-two numeric vectors
+\code{rae} computes the relative absolute error between two numeric vectors
+}
+\details{
+\code{rae} divides \code{sum(ae(actual, predicted))} by \code{sum(ae(actual, mean(actual)))},
+meaning that it provides the error of the predictions relative to a naive model that
+predicted the mean for every data point.
 }
 \examples{
-actual <- c(1,1,1,0,0,0)
-predicted <- c(1,0,1,1,0,0)
-rae(actual, predicted)
+actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
+predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
+rrse(actual, predicted)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{ape}
 \alias{ape}
-\title{Compute the absolute percent error}
+\title{Absolute percent error}
 \usage{
 ape(actual, predicted)
 }
@@ -12,11 +12,19 @@ ape(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the elementwise percent absolute error between
-two numeric vectors
+\code{ape} computes the elementwise absolute percent error between two numeric
+vectors
+}
+\details{
+\code{ape} is calculated as (\code{actual} - \code{predicted}) / \code{actual}.
+This means that the function will return \code{-Inf}, \code{Inf}, or \code{NaN}
+if \code{actual} is zero.
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 ape(actual, predicted)
+}
+\seealso{
+\code{\link{mape}} \code{smape}
 }

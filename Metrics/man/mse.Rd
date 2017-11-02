@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{mse}
 \alias{mse}
-\title{Compute the mean squared error}
+\title{Mean Squared Error}
 \usage{
 mse(actual, predicted)
 }
@@ -12,11 +12,13 @@ mse(actual, predicted)
 \item{predicted}{predicted numeric vector}
 }
 \description{
-This function computes the mean squared error between
-two numeric vectors
+\code{mse} computes the mean squared error between two numeric vectors
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 mse(actual, predicted)
+}
+\seealso{
+\code{\link{rmse}} \code{\link{mae}}
 }

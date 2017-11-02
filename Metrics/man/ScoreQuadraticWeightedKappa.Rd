@@ -8,17 +8,16 @@ ScoreQuadraticWeightedKappa(rater.a, rater.b, min.rating = min(c(rater.a,
   rater.b)), max.rating = max(c(rater.a, rater.b)))
 }
 \arguments{
-\item{rater.a}{is the first rater's ratings}
+\item{rater.a}{An integer vector of the first rater's ratings.}
 
-\item{rater.b}{is the second rater's ratings}
+\item{rater.b}{An integer vector of the second rater's ratings.}
 
-\item{min.rating}{is the minimum possible rating}
+\item{min.rating}{The minimum possible rating.}
 
-\item{max.rating}{is the maximum possible rating}
+\item{max.rating}{The maximum possible rating.}
 }
 \description{
-This function computes the quadratic weighted kappa
-between two vectors of integers
+This function computes the quadratic weighted kappa between two vectors of integers
 }
 \examples{
 rater.a <- c(1, 4, 5, 5, 2, 1)

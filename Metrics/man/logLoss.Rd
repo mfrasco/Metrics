@@ -2,18 +2,20 @@
 % Please edit documentation in R/binary_classification.R
 \name{logLoss}
 \alias{logLoss}
-\title{Compute the mean log loss}
+\title{Mean Log Loss}
 \usage{
 logLoss(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth binary numeric vector}
+\item{actual}{The ground truth binary numeric vector containing 1 for the positive
+class and 0 for the negative class.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{A numeric vector of predicted values, where the values correspond
+to the probabilities that each observation belongs to the positive
+class}
 }
 \description{
-This function computes the mean log loss between
-two numeric vectors
+This function computes the average log loss between two numeric vectors
 }
 \examples{
 actual <- c(1, 1, 1, 0, 0, 0)
