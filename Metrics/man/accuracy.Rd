@@ -2,20 +2,25 @@
 % Please edit documentation in R/classification.R
 \name{accuracy}
 \alias{accuracy}
-\title{Compute the accuracy}
+\title{Accuracy}
 \usage{
 accuracy(actual, predicted)
 }
 \arguments{
-\item{actual}{The ground truth vector.}
+\item{actual}{The ground truth vector, where elements of the vector can be any variable type.}
 
-\item{predicted}{The predicted vector.}
+\item{predicted}{The predicted vector, where elements of the vector represent a
+prediction for the corresponding value in \code{actual}.}
 }
 \description{
-This function computes the accuracy score between two vectors
+\code{accuracy} is defined as the proportion of elements in \code{actual} that are
+equal to the corresponding element in \code{predicted}
 }
 \examples{
 actual <- c('a', 'a', 'c', 'b', 'c')
 predicted <- c('a', 'b', 'c', 'b', 'a')
 accuracy(actual, predicted)
+}
+\seealso{
+\code{\link{ce}}
 }

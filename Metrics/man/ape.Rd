@@ -2,17 +2,18 @@
 % Please edit documentation in R/regression.R
 \name{ape}
 \alias{ape}
-\title{Absolute percent error}
+\title{Absolute Percent Error}
 \usage{
 ape(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{ape} computes the elementwise absolute percent error between two numeric
+\code{ape} computes the elementwise absolute percent difference between two numeric
 vectors
 }
 \details{

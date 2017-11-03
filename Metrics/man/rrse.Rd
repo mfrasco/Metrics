@@ -7,16 +7,17 @@
 rrse(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{rrse} computes the root relative squared error between two numeric vectors
+\code{rrse} computes the root relative squared error between two numeric vectors.
 }
 \details{
 \code{rrse} takes the square root of \code{sse(actual, predicted)} divided by
-\code{sse(actual, mean(actual))}, meaning that it provides the error of the
+\code{sse(actual, mean(actual))}, meaning that it provides the squared error of the
 predictions relative to a naive model that predicted the mean for every data point.
 }
 \examples{
@@ -25,5 +26,5 @@ predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 rrse(actual, predicted)
 }
 \seealso{
-\code{\link{rrse}} \code{\link{rae}}
+\code{\link{rse}} \code{\link{rae}}
 }

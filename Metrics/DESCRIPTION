@@ -1,9 +1,9 @@
 Package: Metrics
 Version: 0.1.3
-Title: Evaluation Metrics for Machine Learning and Forecasting
+Title: Evaluation Metrics for Supervised Machine Learning, Information Retrieval, and Forecasting
 Description: A lightweight set of evaluation metrics commonly used in supervised
-             machine learning and forecasting. This package has zero dependencies and
-             a consistent, simple interface for all functions.
+             machine learning, information retrieval, and forecasting. This package
+             has zero dependencies and a consistent, simple interface for all functions.
 Authors@R: c(
   person("Ben", "Hamner", role = c("aut", "cph"), email = "ben@benhamner.com"),
   person("Michael", "Frasco", role = c("aut", "cre"), email = "mfrasco6@gmail.com"),
@@ -11,7 +11,7 @@ Authors@R: c(
 Maintainer: Michael Frasco <mfrasco6@gmail.com>
 Suggests:
     testthat
-URL: https://github.com/mfrasco/Metrics/tree/master/R
+URL: https://github.com/mfrasco/Metrics
 BugReports: https://github.com/mfrasco/Metrics/issues
 License: BSD_3_clause + file LICENSE
 RoxygenNote: 6.0.1

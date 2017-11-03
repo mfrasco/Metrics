@@ -1,18 +1,19 @@
-#' @title Inherit documentation for regression metrics
+#' @title Inherit Documentation for Regression Metrics
 #' @name params_regression
 #' @description This object provides the documentation for the parameters of functions
 #'              that provide regression metrics
-#' @param actual ground truth numeric vector
-#' @param predicted predicted numeric vector
+#' @param actual The ground truth numeric vector.
+#' @param predicted The predicted numeric vector, where each element in the vector
+#'                  is a prediction for the corresponding element in \code{actual}.
 NULL
 
 #' Bias
 #' 
-#' \code{bias} computes the bias of a vector of predictions.
+#' \code{bias} computes the average amount by which \code{actual} is greater than
+#' \code{predicted}.
 #' 
 #' If a model is unbiased \code{bias(actual, predicted)} should be close to zero.
-#' Bias is calculated by taking the average of
-#' (\code{actual} - \code{predicted}).
+#' Bias is calculated by taking the average of (\code{actual} - \code{predicted}).
 #' 
 #' @inheritParams params_regression
 #' @export
@@ -27,7 +28,8 @@ bias <- function(actual, predicted) {
 
 #' Percent Bias
 #' 
-#' \code{percent_bias} computes the percent bias of a vector of predictions.
+#' \code{percent_bias} computes the average amount that \code{actual} is greater
+#' than \code{predicted} as a percentage of \code{actual}.
 #' 
 #' If a model is unbiased \code{percent_bias(actual, predicted)} should be close
 #' to zero. Percent Bias is calculated by taking the average of
@@ -49,7 +51,7 @@ percent_bias <- function(actual, predicted) {
 
 #' Squared Error
 #'
-#' \code{se} computes the elementwise squared error between two numeric vectors
+#' \code{se} computes the elementwise squared difference between two numeric vectors.
 #'
 #' @inheritParams params_regression
 #' @export
@@ -64,7 +66,7 @@ se <- function(actual, predicted) {
 
 #' Sum of Squared Errors
 #' 
-#' \code{sse} computes the sum of squared errors between two numeric vectors
+#' \code{sse} computes the sum of the squared differences between two numeric vectors.
 #' 
 #' @inheritParams params_regression
 #' @export
@@ -72,14 +74,14 @@ se <- function(actual, predicted) {
 #' @examples
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
-#' se(actual, predicted)
+#' sse(actual, predicted)
 sse <- function(actual, predicted) {
     return(sum(se(actual, predicted)))
 }
 
 #' Mean Squared Error
 #'
-#' \code{mse} computes the mean squared error between two numeric vectors
+#' \code{mse} computes the average squared difference between two numeric vectors.
 #'
 #' @inheritParams params_regression
 #' @export
@@ -109,7 +111,7 @@ rmse <- function(actual, predicted) {
 
 #' Absolute Error
 #'
-#' \code{ae} computes the elementwise absolute error between two numeric vectors
+#' \code{ae} computes the elementwise absolute difference between two numeric vectors.
 #'
 #' @inheritParams params_regression
 #' @export
@@ -124,7 +126,7 @@ ae <- function(actual, predicted) {
 
 #' Mean Absolute Error
 #'
-#' \code{mae} computes the mean absolute error between two numeric vectors
+#' \code{mae} computes the average absolute difference between two numeric vectors.
 #'
 #' @inheritParams params_regression
 #' @export
@@ -139,7 +141,7 @@ mae <- function(actual, predicted) {
 
 #' Median Absolute Error
 #'
-#' \code{mdae} computes the median absolute error between two numeric vectors
+#' \code{mdae} computes the median absolute difference between two numeric vectors.
 #'
 #' @importFrom stats median
 #' @inheritParams params_regression
@@ -153,9 +155,9 @@ mdae <- function(actual, predicted) {
     return(stats::median(ae(actual, predicted)))
 }
 
-#' Absolute percent error
+#' Absolute Percent Error
 #' 
-#' \code{ape} computes the elementwise absolute percent error between two numeric
+#' \code{ape} computes the elementwise absolute percent difference between two numeric
 #' vectors
 #' 
 #' \code{ape} is calculated as (\code{actual} - \code{predicted}) / \code{actual}.
@@ -175,7 +177,7 @@ ape <- function(actual, predicted) {
 
 #' Mean Absolute Percent Error
 #' 
-#' \code{mape} computes the mean absolute percent error between two numeric vectors
+#' \code{mape} computes the average absolute percent difference between two numeric vectors.
 #' 
 #' \code{mape} is calculated as the average of (\code{actual} - \code{predicted}) / \code{actual}.
 #' This means that the function will return \code{-Inf}, \code{Inf}, or \code{NaN}
@@ -196,12 +198,15 @@ mape <- function(actual, predicted) {
 #' Symmetric Mean Absolute Percentage Error
 #' 
 #' \code{smape} computes the symmetric mean absolute percentage error between
-#' two numeric vectors
+#' two numeric vectors.
 #' 
 #' \code{smape} is defined as two times the average of \code{abs(actual - predicted) / (abs(actual) + abs(predicted))}.
-#' As a result, it will provide \code{NaN} only if \code{actual} and \code{predicted}
+#' Therefore, at the elementwise level, it will provide \code{NaN} only if \code{actual} and \code{predicted}
 #' are both zero. It has an upper bound of \code{2}, when either \code{actual} or
-#' \code{predicted} are zero.
+#' \code{predicted} are zero or when \code{actual} and \code{predicted} are opposite
+#' signs.
+#' 
+#' \code{smape} is symmetric in the sense that \code{smape(x, y) = smape(y, x)}.
 #' 
 #' @inheritParams params_regression
 #' @export
@@ -216,13 +221,16 @@ smape <- function(actual, predicted) {
 
 #' Squared Log Error
 #'
-#' \code{sle} computes the elementwise squared log error between two numeric vectors
+#' \code{sle} computes the elementwise squares of the differences in the logs of two numeric vectors.
 #' 
 #' \code{sle} adds one to both \code{actual} and \code{predicted} before taking
-#' the natural logarithm to avoid taking the natural log of zero.
+#' the natural logarithm of each to avoid taking the natural log of zero. As a result,
+#' the function can be used if \code{actual} or \code{predicted} have zero-valued
+#' elements. But this function is not appropriate if either are negative valued.
 #'
-#' @param actual ground truth non-negative vector
-#' @param predicted predicted non-negative vector
+#' @param actual The ground truth non-negative vector
+#' @param predicted The predicted non-negative vector, where each element in the vector
+#'                  is a prediction for the corresponding element in \code{actual}.
 #' @export
 #' @seealso \code{\link{msle}} \code{\link{rmsle}}
 #' @examples
@@ -233,16 +241,18 @@ sle <- function(actual, predicted) {
     return((log(1 + actual) - log(1 + predicted)) ^ 2)
 }
 
-#' Mean squared log error
+#' Mean Squared Log Error
 #'
-#' \code{msle} computes the mean squared log error between two numeric vectors
+#' \code{msle} computes the average of squared log error between two numeric vectors.
 #' 
 #' \code{msle} adds one to both \code{actual} and \code{predicted} before taking
-#' the natural logarithm to avoid taking the natural log of zero.
+#' the natural logarithm to avoid taking the natural log of zero. As a result,
+#' the function can be used if \code{actual} or \code{predicted} have zero-valued
+#' elements. But this function is not appropriate if either are negative valued.
 #'
 #' @inheritParams sle
 #' @export
-#' @seealso \code{\link{rmsle}}
+#' @seealso \code{\link{rmsle}} \code{\link{sle}}
 #' @examples
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
@@ -253,15 +263,16 @@ msle <- function(actual, predicted) {
 
 #' Root Mean Squared Log Error
 #'
-#' \code{rmsle} computes the root mean squared log error between
-#' two numeric vectors
+#' \code{rmsle} computes the root mean squared log error between two numeric vectors.
 #' 
 #' \code{rmsle} adds one to both \code{actual} and \code{predicted} before taking
-#' the natural logarithm to avoid taking the natural log of zero.
+#' the natural logarithm to avoid taking the natural log of zero. As a result,
+#' the function can be used if \code{actual} or \code{predicted} have zero-valued
+#' elements. But this function is not appropriate if either are negative valued.
 #'
 #' @inheritParams sle
 #' @export
-#' @seealso \code{\link{msle}}
+#' @seealso \code{\link{msle}} \code{\link{sle}}
 #' @examples
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
@@ -272,10 +283,10 @@ rmsle <- function(actual, predicted) {
 
 #' Relative Squared Error
 #'
-#' \code{rse} computes the relative squared error between two numeric vectors
+#' \code{rse} computes the relative squared error between two numeric vectors.
 #' 
 #' \code{rse} divides \code{sse(actual, predicted)} by \code{sse(actual, mean(actual))},
-#' meaning that it provides the error of the predictions relative to a naive model that
+#' meaning that it provides the squared error of the predictions relative to a naive model that
 #' predicted the mean for every data point.
 #' 
 #' @inheritParams params_regression
@@ -291,15 +302,15 @@ rse <- function (actual, predicted) {
 
 #' Root Relative Squared Error
 #'
-#' \code{rrse} computes the root relative squared error between two numeric vectors
+#' \code{rrse} computes the root relative squared error between two numeric vectors.
 #' 
 #' \code{rrse} takes the square root of \code{sse(actual, predicted)} divided by
-#' \code{sse(actual, mean(actual))}, meaning that it provides the error of the
+#' \code{sse(actual, mean(actual))}, meaning that it provides the squared error of the
 #' predictions relative to a naive model that predicted the mean for every data point.
 #'
 #' @inheritParams params_regression
 #' @export
-#' @seealso \code{\link{rrse}} \code{\link{rae}}
+#' @seealso \code{\link{rse}} \code{\link{rae}}
 #' @examples
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
@@ -310,18 +321,19 @@ rrse <- function(actual, predicted) {
 
 #' Relative Absolute Error
 #'
-#' \code{rae} computes the relative absolute error between two numeric vectors
+#' \code{rae} computes the relative absolute error between two numeric vectors.
 #' 
 #' \code{rae} divides \code{sum(ae(actual, predicted))} by \code{sum(ae(actual, mean(actual)))},
-#' meaning that it provides the error of the predictions relative to a naive model that
+#' meaning that it provides the absolute error of the predictions relative to a naive model that
 #' predicted the mean for every data point.
 #'
 #' @inheritParams params_regression
+#' @export
+#' @seealso \code{\link{rse}} \code{\link{rrse}}
 #' @examples
 #' actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 #' predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 #' rrse(actual, predicted)
-#' @export
 rae <- function(actual, predicted) {
     return(sum(ae(predicted, actual)) / sum(ae(actual, mean(actual))))
 }

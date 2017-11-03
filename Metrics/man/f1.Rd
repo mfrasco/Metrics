@@ -31,3 +31,6 @@ actual <- c('a', 'c', 'd')
 predicted <- c('d', 'e')
 f1(actual, predicted)
 }
+\seealso{
+\code{\link{apk}} \code{\link{mapk}}
+}

@@ -7,19 +7,23 @@
 smape(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
 \code{smape} computes the symmetric mean absolute percentage error between
-two numeric vectors
+two numeric vectors.
 }
 \details{
 \code{smape} is defined as two times the average of \code{abs(actual - predicted) / (abs(actual) + abs(predicted))}.
-As a result, it will provide \code{NaN} only if \code{actual} and \code{predicted}
+Therefore, at the elementwise level, it will provide \code{NaN} only if \code{actual} and \code{predicted}
 are both zero. It has an upper bound of \code{2}, when either \code{actual} or
-\code{predicted} are zero.
+\code{predicted} are zero or when \code{actual} and \code{predicted} are opposite
+signs.
+
+\code{smape} is symmetric in the sense that \code{smape(x, y) = smape(y, x)}.
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)

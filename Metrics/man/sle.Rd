@@ -7,16 +7,19 @@
 sle(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth non-negative vector}
+\item{actual}{The ground truth non-negative vector}
 
-\item{predicted}{predicted non-negative vector}
+\item{predicted}{The predicted non-negative vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{sle} computes the elementwise squared log error between two numeric vectors
+\code{sle} computes the elementwise squares of the differences in the logs of two numeric vectors.
 }
 \details{
 \code{sle} adds one to both \code{actual} and \code{predicted} before taking
-the natural logarithm to avoid taking the natural log of zero.
+the natural logarithm of each to avoid taking the natural log of zero. As a result,
+the function can be used if \code{actual} or \code{predicted} have zero-valued
+elements. But this function is not appropriate if either are negative valued.
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)

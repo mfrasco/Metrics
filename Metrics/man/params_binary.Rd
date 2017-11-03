@@ -8,7 +8,8 @@
 class and 0 for the negative class.}
 
 \item{predicted}{The predicted binary numeric vector containing 1 for the positive
-class and 0 for the negative class.}
+class and 0 for the negative class. Each element represents the
+prediction for the corresponding element in \code{actual}.}
 }
 \description{
 This object provides the documentation for the parameters of functions

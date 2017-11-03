@@ -10,6 +10,7 @@
 #' \code{f1} is defined as \code{0}.
 #' 
 #' @export
+#' @seealso \code{\link{apk}} \code{\link{mapk}}
 #' @param actual The ground truth vector of relevant documents. The vector can contain
 #'               any numeric or character values, order does not matter, and the
 #'               vector does not need to be the same length as \code{predicted}.
@@ -41,6 +42,14 @@ f1 <- function (actual, predicted) {
 #'
 #' \code{apk} computes the average precision at k, in the context of information
 #' retrieval problems.
+#' 
+#' \code{apk} loops over the first k values of \code{predicted}. For each value, if
+#' the value is contained within \code{actual} and has not been predicted before,
+#' we increment the number of sucesses by one and increment our score by the number
+#' of successes divided by k. Then, we return our final score divided by the number
+#' of relevant documents (i.e. the length of \code{actual}).
+#' 
+#' \code{apk} will return \code{NaN} if \code{length(actual)} equals \code{0}.
 #'
 #' @param k The number of elements of \code{predicted} to consider in the calculation.
 #' @inheritParams f1
@@ -49,6 +58,7 @@ f1 <- function (actual, predicted) {
 #'                  order does matter, with the most documents deemed most likely to
 #'                  be relevant at the beginning.
 #' @export
+#' @seealso \code{\link{apk}} \code{\link{f1}}
 #' @examples
 #' actual <- c('a', 'b', 'd')
 #' predicted <- c('b', 'c', 'a', 'e', 'f')
@@ -59,7 +69,7 @@ apk <- function(k, actual, predicted) {
     for (i in 1:min(k,length(predicted))) {
         if (predicted[i] %in% actual && !(predicted[i] %in% predicted[0:(i-1)])) {
             cnt <- cnt + 1
-            score <- score + cnt/i
+            score <- score + cnt / i
         }
     }
     return(score / min(length(actual), k))
@@ -78,22 +88,40 @@ apk <- function(k, actual, predicted) {
 #'               of relevant documents. In each vector, the elements can be numeric
 #'               or character values, and the order of the elements does not matter.
 #' @param predicted A list of vectors, where each vector represents the predicted vector
-#'                  of retrieved documents. In each vector, the order of the elements
-#'                  does matter, with the elements believed most likely to be relevant
-#'                  at the beginning.
+#'                  of retrieved documents for the corresponding element of \code{actual}.
+#'                  In each vector, the order of the elements does matter, with the
+#'                  elements believed most likely to be relevant at the beginning.
 #' @export
+#' @seealso \code{\link{apk}} \code{\link{f1}}
 #' @examples
 #' actual <- list(c('a', 'b'), c('a'), c('x', 'y', 'b'))
 #' predicted <- list(c('a', 'c', 'd'), c('x', 'b', 'a', 'b'), c('y'))
 #' mapk(2, actual, predicted)
+#' 
+#' actual <- list(c(1, 5, 7, 9), c(2, 3), c(2, 5, 6))
+#' predicted <- list(c(5, 6, 7, 8, 9), c(1, 2, 3), c(2, 4, 6, 8))
+#' mapk(3, actual, predicted)
 mapk <- function(k, actual, predicted) {
     if (length(actual) == 0 || length(predicted) == 0) {
         return(0.0)
     }
     
-    scores <- rep(0, length(actual))
+    convert_to_list <- function(x) {
+        if (is.list(x)) {
+            return(x)
+        } else {
+            arg_name <- deparse(substitute(x))
+            warning(paste(arg_name, 'should be a list of vectors. Converting to a list.'))
+            return(list(x))
+        }
+    }
+    
+    act <- convert_to_list(actual)
+    pred <- convert_to_list(predicted)
+    
+    scores <- rep(0, length(act))
     for (i in 1:length(scores)) {
-        scores[i] <- apk(k, actual[[i]], predicted[[i]])
+        scores[i] <- apk(k, act[[i]], pred[[i]])
     }
     return(mean(scores))
 }
