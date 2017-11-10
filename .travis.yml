@@ -5,8 +5,5 @@ latex: false
 warnings_are_errors: true
 r_check_args: --as-cran
 
-before_install:
-    - cd Metrics
-
 after_success:
     - Rscript -e 'install.packages("covr"); covr::codecov()'
