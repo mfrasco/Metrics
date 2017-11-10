@@ -14,9 +14,9 @@ of relevant documents. In each vector, the elements can be numeric
 or character values, and the order of the elements does not matter.}
 
 \item{predicted}{A list of vectors, where each vector represents the predicted vector
-of retrieved documents. In each vector, the order of the elements
-does matter, with the elements believed most likely to be relevant
-at the beginning.}
+of retrieved documents for the corresponding element of \code{actual}.
+In each vector, the order of the elements does matter, with the
+elements believed most likely to be relevant at the beginning.}
 }
 \description{
 \code{mapk} computes the mean average precision at k for a set of predictions, in
@@ -30,4 +30,11 @@ the context of information retrieval problems.
 actual <- list(c('a', 'b'), c('a'), c('x', 'y', 'b'))
 predicted <- list(c('a', 'c', 'd'), c('x', 'b', 'a', 'b'), c('y'))
 mapk(2, actual, predicted)
+
+actual <- list(c(1, 5, 7, 9), c(2, 3), c(2, 5, 6))
+predicted <- list(c(5, 6, 7, 8, 9), c(1, 2, 3), c(2, 4, 6, 8))
+mapk(3, actual, predicted)
+}
+\seealso{
+\code{\link{apk}} \code{\link{f1}}
 }

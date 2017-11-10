@@ -1,6 +1,8 @@
 Version 0.1.3 (2017-10-21)
 ------------------------------------------------------------------------------
 
+ * added new functions for computing accuracy, bias, percent bias, sum of squared errors, median absolute error, absolute percent error, mean absolute percent error, symmetric mean absolute percent error, and mean absolute scaled error.
+ * restructured package into multiple files based on metric type.
  * fixed documentation bugs and made documentation more descriptive
  * fixed CRAN check errors
  * re-generated documentation and NAMESPACE using Roxygen2

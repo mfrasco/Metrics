@@ -7,12 +7,14 @@
 percent_bias(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{percent_bias} computes the percent bias of a vector of predictions.
+\code{percent_bias} computes the average amount that \code{actual} is greater
+than \code{predicted} as a percentage of \code{actual}.
 }
 \details{
 If a model is unbiased \code{percent_bias(actual, predicted)} should be close

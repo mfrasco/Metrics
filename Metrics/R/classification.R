@@ -2,31 +2,35 @@
 #' @name params_classification
 #' @description This object provides the documentation for the parameters of functions
 #'              that provide classification metrics
-#' @param actual The ground truth vector.
-#' @param predicted The predicted vector.
+#' @param actual The ground truth vector, where elements of the vector can be any variable type.
+#' @param predicted The predicted vector, where elements of the vector represent a
+#'                  prediction for the corresponding value in \code{actual}.
 NULL
 
-#' Compute the classification error
+#' Classification Error
 #'
-#' This function computes the classification error
-#' between two vectors
+#' \code{ce} is defined as the proportion of elements in \code{actual} that are not equal
+#' to the corresponding element in \code{predicted}.
 #'
 #' @inheritParams params_classification
+#' @export
+#' @seealso \code{\link{accuracy}}
 #' @examples
 #' actual <- c('a', 'a', 'c', 'b', 'c')
 #' predicted <- c('a', 'b', 'c', 'b', 'a')
 #' ce(actual, predicted)
-#' @export
 ce <- function(actual, predicted) {
     return(mean(actual != predicted))
 }
 
-#' Compute the accuracy
+#' Accuracy
 #' 
-#' This function computes the accuracy score between two vectors
+#' \code{accuracy} is defined as the proportion of elements in \code{actual} that are
+#' equal to the corresponding element in \code{predicted}
 #' 
 #' @inheritParams params_classification
 #' @export
+#' @seealso \code{\link{ce}}
 #' @examples
 #' actual <- c('a', 'a', 'c', 'b', 'c')
 #' predicted <- c('a', 'b', 'c', 'b', 'a')
@@ -35,15 +39,17 @@ accuracy <- function(actual, predicted) {
     return(1 - ce(actual, predicted))
 }
 
-#' Compute the quadratic weighted kappa
+#' Quadratic Weighted Kappa
 #'
-#' This function computes the quadratic weighted kappa between two vectors of integers
+#' \code{ScoreQuadraticWeightedKappa} computes the quadratic weighted kappa between
+#' two vectors of integers
 #'
 #' @param rater.a An integer vector of the first rater's ratings.
 #' @param rater.b An integer vector of the second rater's ratings.
 #' @param min.rating The minimum possible rating.
 #' @param max.rating The maximum possible rating.
 #' @export
+#' @seealso \code{\link{MeanQuadraticWeightedKappa}}
 #' @examples
 #' rater.a <- c(1, 4, 5, 5, 2, 1)
 #' rater.b <- c(2, 2, 4, 5, 3, 3)
@@ -75,13 +81,15 @@ ScoreQuadraticWeightedKappa <- function(rater.a
     return(1 - sum(weights * confusion.mat) / sum(weights * expected.mat))
 }
 
-#' Compute the mean quadratic weighted kappa
+#' Mean Quadratic Weighted Kappa
 #'
-#' This function computes the mean quadratic weighted kappa, which can optionally be weighted
+#' \code{MeanQuadraticWeightedKappa} computes the mean quadratic weighted kappa,
+#' which can optionally be weighted
 #'
 #' @param kappas A numeric vector of possible kappas.
 #' @param weights An optional numeric vector of ratings.
 #' @export
+#' @seealso \code{\link{ScoreQuadraticWeightedKappa}}
 #' @examples
 #' kappas <- c(0.3 ,0.2, 0.2, 0.5, 0.1, 0.2)
 #' weights <- c(1.0, 2.5, 1.0, 1.0, 2.0, 3.0)

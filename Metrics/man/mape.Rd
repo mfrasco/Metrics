@@ -7,12 +7,13 @@
 mape(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{mape} computes the mean absolute percent error between two numeric vectors
+\code{mape} computes the average absolute percent difference between two numeric vectors.
 }
 \details{
 \code{mape} is calculated as the average of (\code{actual} - \code{predicted}) / \code{actual}.

@@ -4,9 +4,10 @@
 \alias{params_classification}
 \title{Inherit Documentation for Classification Metrics}
 \arguments{
-\item{actual}{The ground truth vector.}
+\item{actual}{The ground truth vector, where elements of the vector can be any variable type.}
 
-\item{predicted}{The predicted vector.}
+\item{predicted}{The predicted vector, where elements of the vector represent a
+prediction for the corresponding value in \code{actual}.}
 }
 \description{
 This object provides the documentation for the parameters of functions

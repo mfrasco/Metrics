@@ -12,11 +12,19 @@ class and 0 for the negative class.}
 
 \item{predicted}{A numeric vector of predicted values, where the smallest values correspond
 to the observations most believed to be in the negative class
-and the largest values correspond to the observations most believed
-to be in the positive class.}
+and the largest values indicate the observations most believed
+to be in the positive class. Each element represents the
+prediction for the corresponding element in \code{actual}.}
 }
 \description{
-This function computes the area under the receiver-operator characteristic curve (AUC)
+\code{auc} computes the area under the receiver-operator characteristic curve (AUC).
+}
+\details{
+\code{auc} uses the fact that the area under the ROC curve is equal to the probability
+that a randomly chosen positive observation has a higher predicted value than a
+randomly chosen negative value. In order to compute this probability, we can
+calculate the Mann-Whitney U statistic. This method is very fast, since we
+do not need to compute the ROC curve first.
 }
 \examples{
 actual <- c(1, 1, 1, 0, 0, 0)

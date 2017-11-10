@@ -2,7 +2,7 @@
 % Please edit documentation in R/classification.R
 \name{MeanQuadraticWeightedKappa}
 \alias{MeanQuadraticWeightedKappa}
-\title{Compute the mean quadratic weighted kappa}
+\title{Mean Quadratic Weighted Kappa}
 \usage{
 MeanQuadraticWeightedKappa(kappas, weights = rep(1, length(kappas)))
 }
@@ -12,10 +12,14 @@ MeanQuadraticWeightedKappa(kappas, weights = rep(1, length(kappas)))
 \item{weights}{An optional numeric vector of ratings.}
 }
 \description{
-This function computes the mean quadratic weighted kappa, which can optionally be weighted
+\code{MeanQuadraticWeightedKappa} computes the mean quadratic weighted kappa,
+which can optionally be weighted
 }
 \examples{
 kappas <- c(0.3 ,0.2, 0.2, 0.5, 0.1, 0.2)
 weights <- c(1.0, 2.5, 1.0, 1.0, 2.0, 3.0)
 MeanQuadraticWeightedKappa(kappas, weights)
+}
+\seealso{
+\code{\link{ScoreQuadraticWeightedKappa}}
 }

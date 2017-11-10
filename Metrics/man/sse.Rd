@@ -7,17 +7,18 @@
 sse(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{sse} computes the sum of squared errors between two numeric vectors
+\code{sse} computes the sum of the squared differences between two numeric vectors.
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)
 predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
-se(actual, predicted)
+sse(actual, predicted)
 }
 \seealso{
 \code{\link{mse}}

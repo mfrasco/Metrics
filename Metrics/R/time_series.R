@@ -4,11 +4,21 @@
 #' vectors. This function is only intended for time series data, where
 #' \code{actual} and \code{numeric} are numeric vectors ordered by time.
 #' 
-#' @param actual ground truth numeric vector ordered in time, with most recent
-#'               observation at the end of the vector
-#' @param predicted predicted numeric vector ordered in time.
-#' @param step_size an integer that specifies how to many observations to look back
-#'                  in order to compute the naive forecast.
+#' @param actual The ground truth numeric vector ordered in time, with most recent
+#'               observation at the end of the vector.
+#' @param predicted The predicted numeric vector ordered in time, where each element
+#'                  of the vector represents a prediction for the corresponding
+#'                  element of \code{actual}.
+#' @param step_size A positive integer that specifies how many observations to look back
+#'                  in time in order to compute the naive forecast. The default is
+#'                  \code{1}, which means that the naive forecast for the current time
+#'                  period is the actual value of the previous period.
+#'                  
+#'                  However, if \code{actual} and \code{predictions} were quarterly
+#'                  predictions over many years, letting \code{step_size = 4}, would
+#'                  mean that the naive forecast for the current time period would
+#'                  be the actual value from the same quarter last year. In this way,
+#'                  \code{mase} can account for seasonality.
 #' @export
 #' @seealso \code{\link{smape}} \code{\link{mape}}
 #' @examples 
@@ -19,7 +29,7 @@
 mase <- function(actual, predicted, step_size = 1) {
     
     naive_start <- step_size + 1
-    n <- length(actual)
+    n <- as.numeric(length(actual))
     naive_end <- n - step_size
     
     sum_errors <- sum(ae(actual, predicted))

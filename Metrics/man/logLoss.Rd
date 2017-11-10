@@ -11,14 +11,17 @@ logLoss(actual, predicted)
 class and 0 for the negative class.}
 
 \item{predicted}{A numeric vector of predicted values, where the values correspond
-to the probabilities that each observation belongs to the positive
-class}
+to the probabilities that each observation in \code{actual}
+belongs to the positive class}
 }
 \description{
-This function computes the average log loss between two numeric vectors
+\code{logLoss} computes the average log loss between two numeric vectors.
 }
 \examples{
 actual <- c(1, 1, 1, 0, 0, 0)
 predicted <- c(0.9, 0.8, 0.4, 0.5, 0.3, 0.2)
 logLoss(actual, predicted)
+}
+\seealso{
+\code{\link{ll}}
 }

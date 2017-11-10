@@ -55,6 +55,7 @@ test_that('symmetric mean absolute percent error is calculated correctly', {
     expect_equal(smape(0, 0), NaN)
     expect_equal(smape(1, -1), 2)
     expect_equal(smape(1, 0), 2)
+    expect_equal(smape(c(1, 2, 3), c(2, 5, 4)), smape(c(2, 5, 4), c(1, 2, 3)))
 })
 
 test_that('squared log error is calculated correctly', {

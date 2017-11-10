@@ -7,9 +7,10 @@
 rmse(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
 \code{rmse} computes the root mean squared error between two numeric vectors

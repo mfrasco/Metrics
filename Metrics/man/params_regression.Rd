@@ -2,11 +2,12 @@
 % Please edit documentation in R/regression.R
 \name{params_regression}
 \alias{params_regression}
-\title{Inherit documentation for regression metrics}
+\title{Inherit Documentation for Regression Metrics}
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
 This object provides the documentation for the parameters of functions

@@ -22,3 +22,7 @@ test_that('mean average precision at k is calculated correctly', {
     expect_equal(mapk(5, list(1:5,1:5), list(c(6,4,7,1,2),c(1,1,1,1,1))), 0.26)
     expect_equal(mapk(3, list(c(1,3),1:3,1:3), list(1:5,c(1,1,1),c(1,2,1))), 11/18)
 })
+
+test_that('mean average precision at k throws a warning if passed a vector', {
+    expect_warning(mapk(3, 2:6, 1:5))
+})

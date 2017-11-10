@@ -7,16 +7,17 @@
 rse(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{rse} computes the relative squared error between two numeric vectors
+\code{rse} computes the relative squared error between two numeric vectors.
 }
 \details{
 \code{rse} divides \code{sse(actual, predicted)} by \code{sse(actual, mean(actual))},
-meaning that it provides the error of the predictions relative to a naive model that
+meaning that it provides the squared error of the predictions relative to a naive model that
 predicted the mean for every data point.
 }
 \examples{

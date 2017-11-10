@@ -7,17 +7,18 @@
 bias(actual, predicted)
 }
 \arguments{
-\item{actual}{ground truth numeric vector}
+\item{actual}{The ground truth numeric vector.}
 
-\item{predicted}{predicted numeric vector}
+\item{predicted}{The predicted numeric vector, where each element in the vector
+is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
-\code{bias} computes the bias of a vector of predictions.
+\code{bias} computes the average amount by which \code{actual} is greater than
+\code{predicted}.
 }
 \details{
 If a model is unbiased \code{bias(actual, predicted)} should be close to zero.
-Bias is calculated by taking the average of
-(\code{actual} - \code{predicted}).
+Bias is calculated by taking the average of (\code{actual} - \code{predicted}).
 }
 \examples{
 actual <- c(1.1, 1.9, 3.0, 4.4, 5.0, 5.6)

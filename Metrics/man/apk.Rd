@@ -22,8 +22,20 @@ be relevant at the beginning.}
 \code{apk} computes the average precision at k, in the context of information
 retrieval problems.
 }
+\details{
+\code{apk} loops over the first k values of \code{predicted}. For each value, if
+the value is contained within \code{actual} and has not been predicted before,
+we increment the number of sucesses by one and increment our score by the number
+of successes divided by k. Then, we return our final score divided by the number
+of relevant documents (i.e. the length of \code{actual}).
+
+\code{apk} will return \code{NaN} if \code{length(actual)} equals \code{0}.
+}
 \examples{
 actual <- c('a', 'b', 'd')
 predicted <- c('b', 'c', 'a', 'e', 'f')
 apk(3, actual, predicted)
+}
+\seealso{
+\code{\link{apk}} \code{\link{f1}}
 }
