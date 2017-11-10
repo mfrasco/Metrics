@@ -1,13 +1,15 @@
 Package: Metrics
 Version: 0.1.3
-Title: Evaluation Metrics for Supervised Machine Learning, Information Retrieval, and Forecasting
-Description: A lightweight set of evaluation metrics commonly used in supervised
-             machine learning, information retrieval, and forecasting. This package
-             has zero dependencies and a consistent, simple interface for all functions.
+Title: Evaluation Metrics for Machine Learning
+Description: An implementation of evaluation metrics in R that are commonly
+             used in supervised machine learning. It implements metrics for
+             regression, time series, binary classification, classification,
+             and information retrieval problems. It has zero dependencies and
+             a consistent, simple interface for all functions.
 Authors@R: c(
-  person("Ben", "Hamner", role = c("aut", "cph"), email = "ben@benhamner.com"),
-  person("Michael", "Frasco", role = c("aut", "cre"), email = "mfrasco6@gmail.com"),
-  person("Erin", "LeDell", role = c("ctb"), email = "oss@ledell.org"))
+    person("Ben", "Hamner", role = c("aut", "cph"), email = "ben@benhamner.com"),
+    person("Michael", "Frasco", role = c("aut", "cre"), email = "mfrasco6@gmail.com"),
+    person("Erin", "LeDell", role = c("ctb"), email = "oss@ledell.org"))
 Maintainer: Michael Frasco <mfrasco6@gmail.com>
 Suggests:
     testthat
