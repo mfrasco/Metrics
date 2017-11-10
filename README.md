@@ -1,79 +1,45 @@
-**Note: the current releases of this toolbox are a beta release, to test working with Haskell's, Python's, and R's code repositories.**
+# Metrics
 
-![Build Status](https://travis-ci.org/benhamner/Metrics.png)
+![Build Status](https://travis-ci.org/mfrasco/Metrics.png)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Metrics)](https://cran.r-project.org/package=Metrics)
+[![Downloads](http://cranlogs.r-pkg.org/badges/Metrics)](https://cran.rstudio.com/web/packages/Metrics/)
 
-**Metrics** provides implementations of various supervised machine learning evaluation metrics in the following languages:
- 
- - [**Python**](https://github.com/benhamner/Metrics/tree/master/Python) ```easy_install ml_metrics```
- - [**R**](https://github.com/benhamner/Metrics/tree/master/R) ```install.packages("Metrics")``` from the R prompt
- - [**Haskell**](https://github.com/benhamner/Metrics/tree/master/Haskell) ```cabal install Metrics```
- - [**MATLAB / Octave**](https://github.com/benhamner/Metrics/tree/master/MATLAB) (clone the repo & run setup from the MATLAB command line)
+## How to Install this Package
 
-For more detailed installation instructions, see the README for each implementation.
+This package is distributed from CRAN. From the R prompt, run `install.packages("Metrics")`.
 
-EVALUATION METRICS
-------------------
+## Metrics Repo
 
-<table>
-<tr><td>Evaluation Metric</td><td>Python</td><td>R</td><td>Haskell</td><td>MATLAB / Octave</td></tr>
-<tr><td>Absolute Error (AE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Average Precision at K (APK, AP@K)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Area Under the ROC (AUC)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Classification Error (CE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>F1 Score (F1)</td><td> </td><td>&#10003;</td><td> </td><td></td></tr>
-<tr><td>Gini</td><td> </td><td> </td><td> </td><td>&#10003;</td></tr>
-<tr><td>Levenshtein</td><td>&#10003;</td><td> </td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Log Loss (LL)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Mean Log Loss (LogLoss)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Mean Absolute Error (MAE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Mean Average Precision at K (MAPK, MAP@K)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Mean Quadratic Weighted Kappa</td><td>&#10003;</td><td>&#10003;</td><td> </td><td>&#10003;</td></tr>
-<tr><td>Mean Squared Error (MSE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Mean Squared Log Error (MSLE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Normalized Gini</td><td> </td><td> </td><td> </td><td>&#10003;</td></tr>
-<tr><td>Quadratic Weighted Kappa</td><td>&#10003;</td><td>&#10003;</td><td> </td><td>&#10003;</td></tr>
-<tr><td>Relative Absolute Error (RAE)</td><td> </td><td>&#10003;</td><td> </td><td> </td></tr>
-<tr><td>Root Mean Squared Error (RMSE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Relative Squared Error (RSE)</td><td> </td><td>&#10003;</td><td> </td><td> </td></tr>
-<tr><td>Root Relative Squared Error (RRSE)</td><td> <td>&#10003;</td> </td><td> </td><td></td></tr>
-<tr><td>Root Mean Squared Log Error (RMSLE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Squared Error (SE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-<tr><td>Squared Log Error (SLE)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-</table>
+This repository contains the code for the **Metrics** package in R. **Metrics** was created by Ben Hamner, and its original home is located [at this github repo](https://github.com/benhamner/Metrics/). That repo contains packages for common machine learning metrics in several programming languages, not just R. However, on 2017-04-21, CRAN orphaned the R package. In an effort to revive the status of the R package, I cloned the original and created this repo. Since then, I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
 
-TO IMPLEMENT
-------------
+## Community Feedback
 
- - F1 score
- - Multiclass log loss
- - Lift
- - Average Precision for binary classification
- - precision / recall break-even point
- - cross-entropy
- - True Pos / False Pos / True Neg / False Neg rates
- - precision / recall / sensitivity / specificity
- - mutual information
+If you notice anything wrong with the **Metrics** package or have any ideas on how to improve it, please create an issue in this github repository that describes your issue. I also welcome improvements to this package via a pull request. This is a simple R package, which makes it perfect for first time open source contributors. [Here is a guide](https://opensource.guide/how-to-contribute/) that walks you through how to make an open source contribution.
 
-HIGHER LEVEL TRANSFORMATIONS TO HANDLE
---------------------------------------
+## What Metrics are Included in this Package?
 
- - GroupBy / Reduce
- - Weight individual samples or groups
+All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as $x$ and `predicted` as $y$ for the sake of mathematical brevity.
 
-PROPERTIES METRICS CAN HAVE
----------------------------
-
-(Nonexhaustive and to be added in the future)
-
- - Min or Max (optimize through minimization or maximization)
- - Binary Classification
-   - Scores predicted class labels
-   - Scores predicted ranking (most likely to least likely for being in one class)
-   - Scores predicted probabilities
- - Multiclass Classification
-   - Scores predicted class labels
-   - Scores predicted probabilities
- - Regression
- - Discrete Rater Comparison (confusion matrix)
-
-  
+| Metric Type | Metric Name | Function Name | Formula |
+| ---- | ------------------------ | ---- | ------------------------------- |
+| regression | Squared Error | se | $(x_i - y_i) ^ 2$ |
+| regression | Mean Squared Error | mse | $\frac{1}{n} \sum_{i=1}^n (x_i - y_i) ^ 2$ |
+| regression | Root Mean Squared Error | rmse | $\sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^ 2}$ |
+| regression | Absolute Error | ae | $\lvert x_i - y_i \rvert$ |
+| regression | Mean Absolute Error | mae | $\frac{1}{n} \sum_{i=1}^n \lvert x_i - y_i \rvert$ |
+| regression | Absolute Percent Error | ape | $\frac{\lvert x_i - y_i \rvert}{x_i}$  |
+| regression | Mean Absolute Percent Error | mape | $\frac{1}{n} \sum_{i=1}^n \frac{\lvert x_i - y_i \rvert}{x_i}$ |
+| regression | Symmetric Mean Absolute Percent Error | smape | $\frac{2}{n} \sum_{i=1}^n  \frac{\lvert x_i - y_i \rvert}{\lvert x_i \rvert + \lvert y_i \rvert}$ |
+| regression | Squared Log Error | sle | $\big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2$ |
+| regression | Mean Squared Log Error | msle | $\frac{1}{n} \sum_{i=1}^n \big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2$ |
+| regression | Root Mean Squared Log Error | rmsle | $\sqrt{\frac{1}{n} \sum_{i=1}^n \big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2}$ |
+| regression | Relative Squared Error | rse | $\Big[\sum_{i=1}^n (x_i - y_i) ^ 2\Big] / \Big[\sum_{i=1}^n (x_i - \bar{x}) ^ 2\Big]$ |
+| regression | Root Relative Squared Error | rse | $\sqrt{\Big[\sum_{i=1}^n (x_i - y_i) ^ 2\Big] / \Big[\sum_{i=1}^n (x_i - \bar{x}) ^ 2\Big]}$ |
+| regression | Relative Absolute Error | rse | $\Big[\sum_{i=1}^n \lvert x_i - y_i \rvert\Big] / \Big[\sum_{i=1}^n \lvert x_i - \bar{x} \rvert\Big]$ |
+| time series |  Mean Absolute Scaled Error | mase | $\Big[\sum_{i=1}^n \lvert x_i - y_i \rvert\Big] / \Big[\frac{n}{n - m} \sum_{i=1+m}^n \lvert x_i - x_{i-m} \rvert \Big]$|
+| classification | Classification Error | ce | $\frac{1}{n} \sum_{i=1}^n I(x_i \neq y_i)$ |
+| classification | Accuracy | accuracy | $\frac{1}{n} \sum_{i=1}^n I(x_i = y_i)$ |
+| classification | F1 Score | f1 | $\frac{2 * \text{precision} * \text{recall}}{\text{precision} + \text{recall}}$ |
+| binary classification | Area Under ROC Curve | auc | $\int_0^1 [1 - G_1(G^{-1}_0(1 - v))] dv$. `help(auc)` for details. |
+| binary classification | Log Loss | ll | $x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |
+| binary classification | Mean Log Loss | logloss | $\frac{1}{n} \sum_{i=1}^n x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |
