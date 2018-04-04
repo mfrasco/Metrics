@@ -31,6 +31,10 @@ NULL
 #' predicted <- c(0.9, 0.8, 0.4, 0.5, 0.3, 0.2)
 #' auc(actual, predicted)
 auc <- function(actual, predicted) {
+    if (length(actual) != length(predicted)) {
+        msg <- "longer object length is not a multiple of shorter object length"
+        warning(msg)
+    }
     r <- rank(predicted)
     n_pos <- as.numeric(sum(actual == 1))
     n_neg <- length(actual) - n_pos
