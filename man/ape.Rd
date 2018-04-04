@@ -17,7 +17,7 @@ is a prediction for the corresponding element in \code{actual}.}
 vectors
 }
 \details{
-\code{ape} is calculated as (\code{actual} - \code{predicted}) / \code{actual}.
+\code{ape} is calculated as (\code{actual} - \code{predicted}) / \code{abs(actual)}.
 This means that the function will return \code{-Inf}, \code{Inf}, or \code{NaN}
 if \code{actual} is zero.
 }

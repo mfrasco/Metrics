@@ -9,6 +9,7 @@ test_that('percent_bias is calculated correctly', {
     expect_equal(percent_bias(c(1, 2, 3), c(1, 3, 2)), mean(c(0, -1/2, 1/3)))
     expect_equal(percent_bias(c(1, 2, 0), c(1, 2, 1)), -Inf)
     expect_equal(percent_bias(0, 0), NaN)
+    expect_equal(percent_bias(c(-1.1, 1.1), c(-1, 1)), 0)
 })
 
 test_that('squared error is calculated correctly', {
@@ -45,10 +46,12 @@ test_that('median absolute error is calculated correctly', {
 test_that('absolute percent error is calculated correctly', {
     expect_equal(ape(0:3, 1:4), c(Inf, 1, 1/2, 1/3))
     expect_equal(ape(0:2, c(0, 0, 0)), c(NaN, 1, 1))
+    expect_equal(ape(c(-1.1, 1.1), c(-1, 1)), c(1 / 11, 1 / 11))
 })
 
 test_that('mean absolute percent error is calculated correctly', {
     expect_equal(mape(1:3, 2:4), mean(c(1, 1/2, 1/3)))
+    expect_equal(mape(c(-1.1, 1.1), c(-1, 1)), 1 / 11)
 })
 
 test_that('symmetric mean absolute percent error is calculated correctly', {

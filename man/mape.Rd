@@ -16,7 +16,7 @@ is a prediction for the corresponding element in \code{actual}.}
 \code{mape} computes the average absolute percent difference between two numeric vectors.
 }
 \details{
-\code{mape} is calculated as the average of (\code{actual} - \code{predicted}) / \code{actual}.
+\code{mape} is calculated as the average of (\code{actual} - \code{predicted}) / \code{abs(actual)}.
 This means that the function will return \code{-Inf}, \code{Inf}, or \code{NaN}
 if \code{actual} is zero. Due to the instability at or near zero, \code{smape} or
 \code{mase} are often used as alternatives.

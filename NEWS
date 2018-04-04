@@ -1,3 +1,9 @@
+Version 0.1.4 (2018-04-03)
+------------------------------------------------------------------------------
+
+* Fixed bugs in percent_bias, ape, and mape. These functions did not properly
+handle negative values in the actual variable.
+
 Version 0.1.3 (2017-10-21)
 ------------------------------------------------------------------------------
 
