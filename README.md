@@ -22,7 +22,7 @@ All functions in the **Metrics** package take at least two arguments: `actual` a
 
 | Metric Type | Metric Name | Function Name | Formula |
 | ---- | ------------------------ | ---- | ------------------------------- |
-| regression | Squared Error | se | $(x_i - y_i) ^ 2$ |
+| regression | Squared Error | se | ![equation](https://latex.codecogs.com/gif.latex?%28x_i%20-%20y_i%29%20%5E%202) |
 | regression | Mean Squared Error | mse | $\frac{1}{n} \sum_{i=1}^n (x_i - y_i) ^ 2$ |
 | regression | Root Mean Squared Error | rmse | $\sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^ 2}$ |
 | regression | Absolute Error | ae | $\lvert x_i - y_i \rvert$ |
