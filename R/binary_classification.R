@@ -112,8 +112,8 @@ recall <- function(actual, predicted) {
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(1, 0, 1, 1, 1, 1)
 #' recall(actual, predicted)
-f1_score <- function(actual, predicted) {
+f1_score <- function(actual, predicted, beta = 1) {
   prec = precision(actual, predicted)
   rec = recall(actual, predicted)
-  return(2 * prec * rec / (prec + rec))
+  return((1 + beta^2) * prec * rec / ((beta^2 * prec) + rec))
 }
