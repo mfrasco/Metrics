@@ -18,7 +18,7 @@ If you notice anything wrong with the **Metrics** package or have any ideas on h
 
 ## What Metrics are Included in this Package?
 
-All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20x) and `predicted` as ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20y) for the sake of mathematical brevity.
+All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as x and `predicted` as y for the sake of mathematical brevity.
 
 | Metric Type | Metric Name | Function Name | Formula |
 | ---- | ------------------------ | ---- | ------------------------------- |
