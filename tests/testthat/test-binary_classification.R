@@ -24,7 +24,7 @@ test_that('mean los loss is calculated correctly', {
 test_that('precision is calculated correctly', {
     expect_equal(precision(c(1,1,0,0),c(1,1,0,0)), 1)
     expect_equal(precision(c(0,0,1,1),c(1,1,0,0)), 0)
-    expect_equal(precision(c(1,1,0,0),c(1,1,1,1)), 1.2)
+    expect_equal(precision(c(1,1,0,0),c(1,1,1,1)), 1/2)
 })
 
 test_that('recall is calculated correctly', {
