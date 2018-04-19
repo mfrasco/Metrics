@@ -76,3 +76,44 @@ ll <- function(actual, predicted) {
 logLoss <- function(actual, predicted) {
     return(mean(ll(actual, predicted)))
 }
+
+
+
+#' Precision
+#' 
+#' \code{precision} computes proportion of predicted 1's that are actual 1's
+#' @export
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 1, 1, 1, 1, 1)
+#' precision(actual, predicted)
+precision <- function(actual, predicted) {
+  return(mean(actual[predicted == 1]))
+}
+
+#' Recall
+#' 
+#' \code{recall} computes proportion of actual 1's that are predicted 1's
+#' @export
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 0, 1, 1, 1, 1)
+#' recall(actual, predicted)
+recall <- function(actual, predicted) {
+  return(mean(predicted[actual == 1]))
+}
+
+#' F1 score
+#' 
+#' \code{f1_score} computes the f1 score
+#' @export
+#' @seealso \code{\link{precision}}, \code{\link{recall}}
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 0, 1, 1, 1, 1)
+#' recall(actual, predicted)
+f1_score <- function(actual, predicted) {
+  prec = precision(actual, predicted)
+  rec = recall(actual, predicted)
+  return(2 * prec * rec / (prec + rec))
+}
