@@ -33,9 +33,10 @@ test_that('recall is calculated correctly', {
   expect_equal(recall(c(1,1,1,1),c(1,0,0,1)), 1/2)
 })
 
-test_that('f1 score is calculated correctly',{
-  expect_equal(f1_score(c(1,1,0,0),c(1,1,0,0)), 1)
-  expect_equal(f1_score(c(0,0,1,1),c(1,1,1,0)), 2/5)
-  expect_equal(f1_score(c(1,1,1,1),c(1,0,0,1)), 2/3)
+test_that('f-beta score is calculated correctly',{
+  expect_equal(fbeta_score(c(1,1,0,0),c(1,1,0,0)), 1)
+  expect_equal(fbeta_score(c(0,0,1,1),c(1,1,1,0)), 2/5)
+  expect_equal(fbeta_score(c(1,1,1,1),c(1,0,0,1)), 2/3)
+  expect_equal(fbeta_score(c(1,1,0,0),c(1,1,1,1),beta=0), 1/2)
 })
 
