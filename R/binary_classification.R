@@ -124,9 +124,9 @@ recall <- function(actual, predicted) {
 #' @param beta A non-negative real number controlling how close the F-beta score is to 
 #'             either Precision or Recall. When \code{beta} is at the default of 1, 
 #'             the F-beta Score is exactly an equally weighted harmonic mean.
-#'             The F-beta score will weight toward Precision when \code{beta} is close
-#'             to zero.  The F-beta score will weight toward Recall for large values of
-#'             \code{beta}.
+#'             The F-beta score will weight toward Precision when \code{beta} is less 
+#'             than one.  The F-beta score will weight toward Recall when \code{beta} is
+#'             greater than one.
 #' @export
 #' @seealso \code{\link{precision}} \code{\link{recall}}
 #' @examples 

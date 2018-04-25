@@ -17,9 +17,9 @@ prediction for the corresponding element in \code{actual}.}
 \item{beta}{A non-negative real number controlling how close the F-beta score is to 
 either Precision or Recall. When \code{beta} is at the default of 1, 
 the F-beta Score is exactly an equally weighted harmonic mean.
-The F-beta score will weight toward Precision when \code{beta} is close
-to zero.  The F-beta score will weight toward Recall for large values of
-\code{beta}.}
+The F-beta score will weight toward Precision when \code{beta} is less 
+than one.  The F-beta score will weight toward Recall when \code{beta} is
+greater than one.}
 }
 \description{
 \code{fbeta_score} computes a weighted harmonic mean of Precision and Recall.
