@@ -81,39 +81,60 @@ logLoss <- function(actual, predicted) {
 
 #' Precision
 #' 
-#' \code{precision} computes proportion of predicted 1's that are actual 1's
+#' \code{precision} computes proportion of observations predicted to be in the
+#'                  positive class (i.e. the element in \code{predicted} equals 1)
+#'                  that actually belong to the positive class (i.e. the element 
+#'                  in \code{actual} equals 1)
+#'     
+#' @inheritParams params_binary
 #' @export
+#' @seealso \code{\link{recall}} \code{\link{fbeta_score}}
 #' @examples 
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(1, 1, 1, 1, 1, 1)
 #' precision(actual, predicted)
 precision <- function(actual, predicted) {
-  return(mean(actual[predicted == 1]))
+    return(mean(actual[predicted == 1]))
 }
 
 #' Recall
 #' 
-#' \code{recall} computes proportion of actual 1's that are predicted 1's
+#' \code{recall} computes proportion of observations in the positive class
+#'               (i.e. the element in \code{actual} equals 1) that are predicted
+#'               to be in the positive class (i.e. the element in \code{predicted}
+#'               equals 1)
+#'     
+#' @inheritParams params_binary
 #' @export
+#' @seealso \code{\link{precision}} \code{\link{fbeta_score}}
 #' @examples 
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(1, 0, 1, 1, 1, 1)
 #' recall(actual, predicted)
 recall <- function(actual, predicted) {
-  return(mean(predicted[actual == 1]))
+    return(mean(predicted[actual == 1]))
 }
 
-#' F1 score
+#' F-beta Score
 #' 
-#' \code{f1_score} computes the f1 score
+#' \code{fbeta_score} computes a weighted harmonic mean of Precision and Recall.
+#'                    The \code{beta} parameter controls the weighting.
+#'                    
+#' @inheritParams params_binary
+#' @param beta A non-negative real number controlling how close the F-beta score is to 
+#'             either Precision or Recall. When \code{beta} is at the default of 1, 
+#'             the F-beta Score is exactly an equally weighted harmonic mean.
+#'             The F-beta score will weight toward Precision when \code{beta} is close
+#'             to zero.  The F-beta score will weight toward Recall for large values of
+#'             \code{beta}.
 #' @export
-#' @seealso \code{\link{precision}}, \code{\link{recall}}
+#' @seealso \code{\link{precision}} \code{\link{recall}}
 #' @examples 
 #' actual <- c(1, 1, 1, 0, 0, 0)
 #' predicted <- c(1, 0, 1, 1, 1, 1)
 #' recall(actual, predicted)
-f1_score <- function(actual, predicted, beta = 1) {
-  prec = precision(actual, predicted)
-  rec = recall(actual, predicted)
-  return((1 + beta^2) * prec * rec / ((beta^2 * prec) + rec))
+fbeta_score <- function(actual, predicted, beta = 1) {
+    prec <- precision(actual, predicted)
+    rec <- recall(actual, predicted)
+    return((1 + beta^2) * prec * rec / ((beta^2 * prec) + rec))
 }
