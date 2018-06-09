@@ -1,6 +1,8 @@
-Version 0.1.4 (2018-04-03)
+Version 0.1.4 (2018-06-09)
 ------------------------------------------------------------------------------
 
+* Added functions to compute precision, recall, and fbeta_score in the context of binary classification.
+* Improved the documentation of the README to have fancy Latex images of each metric.
 * Fixed bugs in percent_bias, ape, and mape. These functions did not properly
 handle negative values in the actual variable.
 * auc now throws a warning if you pass vectors of different lengths.
