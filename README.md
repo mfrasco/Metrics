@@ -10,7 +10,7 @@ This package is distributed from CRAN. From the R prompt, run `install.packages(
 
 ## Metrics Repo
 
-This repository contains the code for the **Metrics** package in R. **Metrics** was created by Ben Hamner, and its original home is located [at this github repo](https://github.com/benhamner/Metrics/). That repo contains packages for common machine learning metrics in several programming languages, not just R. However, on 2017-04-21, CRAN orphaned the R package. In an effort to revive the status of the R package, I cloned the original and created this repo. Since then, I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
+This repository contains code for the **Metrics** package in R. **Metrics** was created by Ben Hamner and came from [this github repo](https://github.com/benhamner/Metrics/). Hamner's repo contains packages for common machine learning metrics in several programming languages, not just R. On 2017-04-21, CRAN orphaned the R package. To revive the status of the R package, I cloned the original and created this repo. I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
 
 ## Community Feedback
 
