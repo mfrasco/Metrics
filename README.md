@@ -10,7 +10,7 @@ This package is distributed from CRAN. From the R prompt, run `install.packages(
 
 ## Metrics Repo
 
-This repository contains the code for the **Metrics** package in R. **Metrics** was created by Ben Hamner, and its original home is located [at this github repo](https://github.com/benhamner/Metrics/). That repo contains packages for common machine learning metrics in several programming languages, not just R. However, on 2017-04-21, CRAN orphaned the R package. In an effort to revive the status of the R package, I cloned the original and created this repo. Since then, I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
+This repository contains code for the **Metrics** package in R. **Metrics** was created by Ben Hamner and came from [this github repo](https://github.com/benhamner/Metrics/). Hamner's repo contains packages for common machine learning metrics in several programming languages, not just R. On 2017-04-21, CRAN orphaned the R package. To revive the status of the R package, I cloned the original and created this repo. I have added new metrics, improved documentation, and fixed bugs. This repository will be the home of active development on the **Metrics** R package moving forward.
 
 ## Community Feedback
 
@@ -18,28 +18,31 @@ If you notice anything wrong with the **Metrics** package or have any ideas on h
 
 ## What Metrics are Included in this Package?
 
-All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as $x$ and `predicted` as $y$ for the sake of mathematical brevity.
+All functions in the **Metrics** package take at least two arguments: `actual` and `predicted`. In the table below, I abbreviate `actual` as x and `predicted` as y for the sake of mathematical brevity.
 
 | Metric Type | Metric Name | Function Name | Formula |
 | ---- | ------------------------ | ---- | ------------------------------- |
-| regression | Squared Error | se | $(x_i - y_i) ^ 2$ |
-| regression | Mean Squared Error | mse | $\frac{1}{n} \sum_{i=1}^n (x_i - y_i) ^ 2$ |
-| regression | Root Mean Squared Error | rmse | $\sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - y_i)^ 2}$ |
-| regression | Absolute Error | ae | $\lvert x_i - y_i \rvert$ |
-| regression | Mean Absolute Error | mae | $\frac{1}{n} \sum_{i=1}^n \lvert x_i - y_i \rvert$ |
-| regression | Absolute Percent Error | ape | $\frac{\lvert x_i - y_i \rvert}{x_i}$  |
-| regression | Mean Absolute Percent Error | mape | $\frac{1}{n} \sum_{i=1}^n \frac{\lvert x_i - y_i \rvert}{x_i}$ |
-| regression | Symmetric Mean Absolute Percent Error | smape | $\frac{2}{n} \sum_{i=1}^n  \frac{\lvert x_i - y_i \rvert}{\lvert x_i \rvert + \lvert y_i \rvert}$ |
-| regression | Squared Log Error | sle | $\big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2$ |
-| regression | Mean Squared Log Error | msle | $\frac{1}{n} \sum_{i=1}^n \big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2$ |
-| regression | Root Mean Squared Log Error | rmsle | $\sqrt{\frac{1}{n} \sum_{i=1}^n \big(\ln(1 + x_i) - \ln(1 + y_i)\big) ^ 2}$ |
-| regression | Relative Squared Error | rse | $\Big[\sum_{i=1}^n (x_i - y_i) ^ 2\Big] / \Big[\sum_{i=1}^n (x_i - \bar{x}) ^ 2\Big]$ |
-| regression | Root Relative Squared Error | rse | $\sqrt{\Big[\sum_{i=1}^n (x_i - y_i) ^ 2\Big] / \Big[\sum_{i=1}^n (x_i - \bar{x}) ^ 2\Big]}$ |
-| regression | Relative Absolute Error | rse | $\Big[\sum_{i=1}^n \lvert x_i - y_i \rvert\Big] / \Big[\sum_{i=1}^n \lvert x_i - \bar{x} \rvert\Big]$ |
-| time series |  Mean Absolute Scaled Error | mase | $\Big[\sum_{i=1}^n \lvert x_i - y_i \rvert\Big] / \Big[\frac{n}{n - m} \sum_{i=1+m}^n \lvert x_i - x_{i-m} \rvert \Big]$|
-| classification | Classification Error | ce | $\frac{1}{n} \sum_{i=1}^n I(x_i \neq y_i)$ |
-| classification | Accuracy | accuracy | $\frac{1}{n} \sum_{i=1}^n I(x_i = y_i)$ |
-| classification | F1 Score | f1 | $\frac{2 * \text{precision} * \text{recall}}{\text{precision} + \text{recall}}$ |
-| binary classification | Area Under ROC Curve | auc | $\int_0^1 [1 - G_1(G^{-1}_0(1 - v))] dv$. `help(auc)` for details. |
-| binary classification | Log Loss | ll | $x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |
-| binary classification | Mean Log Loss | logloss | $\frac{1}{n} \sum_{i=1}^n x_i * \ln(y_i) + (1 - x_i) * \ln(1 - y_i)$ |
+| regression | Squared Error | se | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%28x_i-y_i%29%5E2) |
+| regression | Mean Squared Error | mse | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20y_i%29%20%5E%202) |
+| regression | Root Mean Squared Error | rmse | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csqrt%7B%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20y_i%29%5E%202%7D) |
+| regression | Absolute Error | ae | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Clvert%20x_i%20-%20y_i%20%5Crvert) |
+| regression | Mean Absolute Error | mae | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%5Clvert%20x_i%20-%20y_i%20%5Crvert) |
+| regression | Absolute Percent Error | ape | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B%5Clvert%20x_i%20-%20y_i%20%5Crvert%7D%7Bx_i%7D) |
+| regression | Mean Absolute Percent Error | mape | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%5Cfrac%7B%5Clvert%20x_i%20-%20y_i%20%5Crvert%7D%7Bx_i%7D) |
+| regression | Symmetric Mean Absolute Percent Error | smape | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B2%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%5Cfrac%7B%5Clvert%20x_i%20-%20y_i%20%5Crvert%7D%7B%5Clvert%20x_i%20%5Crvert%20&plus;%20%5Clvert%20y_i%20%5Crvert%7D) |
+| regression | Squared Log Error | sle | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cbig%28%5Cln%281%20&plus;%20x_i%29%20-%20%5Cln%281%20&plus;%20y_i%29%5Cbig%29%20%5E%202) |
+| regression | Mean Squared Log Error | msle | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%5Cbig%28%5Cln%281%20&plus;%20x_i%29%20-%20%5Cln%281%20&plus;%20y_i%29%5Cbig%29%20%5E%202) |
+| regression | Root Mean Squared Log Error | rmsle | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csqrt%7B%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20%5Cbig%28%5Cln%281%20&plus;%20x_i%29%20-%20%5Cln%281%20&plus;%20y_i%29%5Cbig%29%20%5E%202%7D) |
+| regression | Relative Squared Error | rse | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20y_i%29%20%5E%202%5CBig%5D%20/%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20%5Cbar%7Bx%7D%29%20%5E%202%5CBig%5D) |
+| regression | Root Relative Squared Error | rse | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csqrt%7B%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20y_i%29%20%5E%202%5CBig%5D%20/%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20%5Cbar%7Bx%7D%29%20%5E%202%5CBig%5D%7D) |
+| regression | Relative Absolute Error | rse | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%5Clvert%20x_i%20-%20y_i%20%5Crvert%5CBig%5D%20/%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%5Clvert%20x_i%20-%20%5Cbar%7Bx%7D%20%5Crvert%5CBig%5D) |
+| time series |  Mean Absolute Scaled Error | mase | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5CBig%5B%5Csum_%7Bi%3D1%7D%5En%20%5Clvert%20x_i%20-%20y_i%20%5Crvert%5CBig%5D%20/%20%5CBig%5B%5Cfrac%7Bn%7D%7Bn%20-%20m%7D%20%5Csum_%7Bi%3D1&plus;m%7D%5En%20%5Clvert%20x_i%20-%20x_%7Bi-m%7D%20%5Crvert%20%5CBig%5D)|
+| classification | Classification Error | ce | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20I%28x_i%20%5Cneq%20y_i%29) |
+| classification | Accuracy | accuracy | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20I%28x_i%20%3D%20y_i%29) |
+| classification | F1 Score | f1 | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B2%20*%20%5Ctext%7Bprecision%7D%20*%20%5Ctext%7Brecall%7D%7D%7B%5Ctext%7Bprecision%7D%20&plus;%20%5Ctext%7Brecall%7D%7D) |
+| binary classification | Area Under ROC Curve | auc | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cint_0%5E1%20%5B1%20-%20G_1%28G%5E%7B-1%7D_0%281%20-%20v%29%29%5D%20dv). `help(auc)` for details. |
+| binary classification | Log Loss | ll | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20x_i%20*%20%5Cln%28y_i%29%20&plus;%20%281%20-%20x_i%29%20*%20%5Cln%281%20-%20y_i%29) |
+| binary classification | Mean Log Loss | logloss | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi%3D1%7D%5En%20x_i%20*%20%5Cln%28y_i%29%20&plus;%20%281%20-%20x_i%29%20*%20%5Cln%281%20-%20y_i%29) |
+| binary classification | Precision | precision | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7B%5Csum%20I%28y_i%20%3D%201%29%7D%5Csum_%7Bi%3D1%7D%20%5E%7Bn%7D%20I%28y_i%20%3D%201%29x_i) |
+| binary classification | Recall | recall | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Cfrac%7B1%7D%7B%5Csum%20I%28x_i%20%3D%201%29%7D%5Csum_%7Bi%3D1%7D%20%5E%7Bn%7D%20I%28x_i%20%3D%201%29y_i) |
+| binary classification | F-beta Score | fbeta_score | ![equation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%281%20&plus;%20%5Cbeta%5E2%29%20%5Cfrac%7B%5Ctext%7Bprecision%7D%20*%20%5Ctext%7Brecall%7D%7D%7B%20%28%5Cbeta%5E2%20*%20%5Ctext%7Bprecision%7D%29%20&plus;%20%5Ctext%7Brecall%7D%7D) |

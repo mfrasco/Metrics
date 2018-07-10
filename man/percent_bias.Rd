@@ -14,12 +14,12 @@ is a prediction for the corresponding element in \code{actual}.}
 }
 \description{
 \code{percent_bias} computes the average amount that \code{actual} is greater
-than \code{predicted} as a percentage of \code{actual}.
+than \code{predicted} as a percentage of the absolute value of \code{actual}.
 }
 \details{
 If a model is unbiased \code{percent_bias(actual, predicted)} should be close
 to zero. Percent Bias is calculated by taking the average of
-(\code{actual} - \code{predicted}) / \code{actual}.
+(\code{actual} - \code{predicted}) / \code{abs(actual)} across all observations.
 
 \code{percent_bias} will give \code{-Inf}, \code{Inf}, or \code{NaN}, if any
 elements of \code{actual} are \code{0}.

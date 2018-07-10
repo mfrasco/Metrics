@@ -31,6 +31,10 @@ NULL
 #' predicted <- c(0.9, 0.8, 0.4, 0.5, 0.3, 0.2)
 #' auc(actual, predicted)
 auc <- function(actual, predicted) {
+    if (length(actual) != length(predicted)) {
+        msg <- "longer object length is not a multiple of shorter object length"
+        warning(msg)
+    }
     r <- rank(predicted)
     n_pos <- as.numeric(sum(actual == 1))
     n_neg <- length(actual) - n_pos
@@ -71,4 +75,66 @@ ll <- function(actual, predicted) {
 #' logLoss(actual, predicted)
 logLoss <- function(actual, predicted) {
     return(mean(ll(actual, predicted)))
+}
+
+
+
+#' Precision
+#' 
+#' \code{precision} computes proportion of observations predicted to be in the
+#'                  positive class (i.e. the element in \code{predicted} equals 1)
+#'                  that actually belong to the positive class (i.e. the element 
+#'                  in \code{actual} equals 1)
+#'     
+#' @inheritParams params_binary
+#' @export
+#' @seealso \code{\link{recall}} \code{\link{fbeta_score}}
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 1, 1, 1, 1, 1)
+#' precision(actual, predicted)
+precision <- function(actual, predicted) {
+    return(mean(actual[predicted == 1]))
+}
+
+#' Recall
+#' 
+#' \code{recall} computes proportion of observations in the positive class
+#'               (i.e. the element in \code{actual} equals 1) that are predicted
+#'               to be in the positive class (i.e. the element in \code{predicted}
+#'               equals 1)
+#'     
+#' @inheritParams params_binary
+#' @export
+#' @seealso \code{\link{precision}} \code{\link{fbeta_score}}
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 0, 1, 1, 1, 1)
+#' recall(actual, predicted)
+recall <- function(actual, predicted) {
+    return(mean(predicted[actual == 1]))
+}
+
+#' F-beta Score
+#' 
+#' \code{fbeta_score} computes a weighted harmonic mean of Precision and Recall.
+#'                    The \code{beta} parameter controls the weighting.
+#'                    
+#' @inheritParams params_binary
+#' @param beta A non-negative real number controlling how close the F-beta score is to 
+#'             either Precision or Recall. When \code{beta} is at the default of 1, 
+#'             the F-beta Score is exactly an equally weighted harmonic mean.
+#'             The F-beta score will weight toward Precision when \code{beta} is less 
+#'             than one.  The F-beta score will weight toward Recall when \code{beta} is
+#'             greater than one.
+#' @export
+#' @seealso \code{\link{precision}} \code{\link{recall}}
+#' @examples 
+#' actual <- c(1, 1, 1, 0, 0, 0)
+#' predicted <- c(1, 0, 1, 1, 1, 1)
+#' recall(actual, predicted)
+fbeta_score <- function(actual, predicted, beta = 1) {
+    prec <- precision(actual, predicted)
+    rec <- recall(actual, predicted)
+    return((1 + beta^2) * prec * rec / ((beta^2 * prec) + rec))
 }
