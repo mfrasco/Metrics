@@ -16,4 +16,4 @@ You should [open up a new issue](https://github.com/mfrasco/Metrics/issues/new) 
 
 If this is your first contribution to an open source project, I recommend that you [read this](https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution).
 
-Otherwise, please make the pull request from your forked repo against the dev branch of this repo. All new changes to the repo are first brought into the dev branch. When we release the next version of the package onto CRAN, the dev branch is merged into master.
+Otherwise, please make the pull request from your forked repo against the master branch of this repo.
