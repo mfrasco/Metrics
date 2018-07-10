@@ -1,4 +1,4 @@
-Version 0.1.4 (2018-06-09)
+Version 0.1.4 (2018-07-09)
 ------------------------------------------------------------------------------
 
 * Added functions to compute precision, recall, and fbeta_score in the context of binary classification.
