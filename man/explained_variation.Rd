@@ -28,5 +28,5 @@ predicted <- c(0.9, 1.8, 2.5, 4.5, 5.0, 6.2)
 explained_variation(actual, predicted)
 }
 \seealso{
-\cord{\link{rse}}
+\code{\link{rse}}
 }
