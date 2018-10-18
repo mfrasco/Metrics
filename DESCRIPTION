@@ -16,4 +16,4 @@ Suggests:
 URL: https://github.com/mfrasco/Metrics
 BugReports: https://github.com/mfrasco/Metrics/issues
 License: BSD_3_clause + file LICENSE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

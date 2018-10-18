@@ -93,3 +93,8 @@ test_that('relative squared error is calculated correctly', {
 })
 
 
+test_that('explained variation is calculated correctly', {
+  expect_equal(explained_variation(0:10, 2:12), 0.6)
+  expect_equal(explained_variation(seq(0,2,0.5), seq(0,2,0.5)), 1.0)
+  expect_equal(explained_variation(1:4, c(1,2,3,5)), 0.8)
+})
